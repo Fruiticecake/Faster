@@ -1,6 +1,7 @@
+'use strict'
+
 const { src, dest, watch, series } = require('gulp')
 const plumber = require('gulp-plumber')
-const notify = require('gulp-notify')
 const pug = require('gulp-pug')
 const rename = require('gulp-rename')
 const beautify = require('gulp-beautify')
@@ -10,7 +11,7 @@ const { Server } = require('./server')
 class Pug {
   static compile () {
     return src([`${process.env.SRC_PATH}/${process.env.PUG_DIR}/**/*.pug`, `!${process.env.SRC_PATH}/${process.env.PUG_DIR}/**/_*.pug`])
-      .pipe(plumber({ errorHandler: notify.onError('Error: <%= error.message %>') }))
+      .pipe(plumber())
       .pipe(pug({
         pretty: true
       }))
@@ -23,12 +24,11 @@ class Pug {
         end_with_newline: true
       }))
       .pipe(dest(process.env.PUBLIC_PATH))
-      .pipe(notify('pug'))
   }
 
   static lint () {
     return src([`${process.env.SRC_PATH}/${process.env.PUG_DIR}/**/*.pug`, `!${process.env.SRC_PATH}/${process.env.PUG_DIR}/**/_*.pug`])
-      .pipe(plumber({ errorHandler: notify.onError('Error: <%= error.message %>') }))
+      .pipe(plumber())
       .pipe(pugLinter({ reporter: 'default' }))
   }
 
