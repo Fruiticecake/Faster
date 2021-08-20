@@ -1,0 +1,46 @@
+-
+  const isHome = () => page === "home"
+
+  const isPage = (lowerPage) => page === lowerPage
+
+  const getTitle = (page) => {
+    if (isWp) {
+      return "<?php wp_title('|', true, 'right') . bloginfo('name'); ?>"
+    } else {
+      return meta[page].title
+    }
+  }
+
+  const getHeadPath = () => {
+    if (isWp) {
+      return "<?php echo get_theme_file_uri(); ?>/assets"
+    } else {
+      return isHome() ?
+        "./assets" :
+        "../assets"
+    }
+  }
+
+  const getCssPath = (file) => `${getHeadPath()}/${dir.css}/${file}`
+
+  const getJsPath = (file) => `${getHeadPath()}/${dir.js}/${file}`
+
+  const getImgPath = (file) => `${getHeadPath()}/${dir.images}/${file}`
+
+  const getBgPath = (file) => `background-image: url(${getHeadPath()}/${dir.image}/${file});`
+
+  const homeUrl = (link, id = "") => {
+    if (id !== "") {
+      id = "#" + id
+    }
+
+    if (isWp) {
+      return `<?php echo esc_url(home_url(${link}${id})); ?>`
+    } else {
+      if (link === "/") {
+        return "./index.html"
+      } else {
+        return `.${link}.html${id}`
+      }
+    }
+  }
