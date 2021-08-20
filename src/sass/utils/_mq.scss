@@ -1,0 +1,77 @@
+@use "../vars/mq" as v;
+
+@function is-sp() {
+  @if (map-get(v.$mq-config, bd) == "sp") {
+    @return true;
+  } @else {
+    @return false;
+  }
+}
+
+@function is-pc() {
+  @if (map-get(v.$mq-config, bd) == "pc") {
+    @return true;
+  } @else {
+    @return false;
+  }
+}
+
+@mixin mq-sm () {
+  @if (is-sp()) {
+    @media screen and (min-width: map-get(v.$mq-config, sm)) {
+      @content;
+    }
+  } @else if (is-pc()) {
+    @media screen and (max-width: map-get(v.$mq-config, sm) - 1) {
+      @content;
+    }
+  }
+}
+
+@mixin mq-md () {
+  @if (is-sp()) {
+    @media screen and (min-width: map-get(v.$mq-config, md)) {
+      @content;
+    }
+  } @else if (is-pc()) {
+    @media screen and (max-width: map-get(v.$mq-config, md) - 1) {
+      @content;
+    }
+  }
+}
+
+@mixin mq-lg () {
+  @if (is-sp()) {
+    @media screen and (min-width: map-get(v.$mq-config, lg)) {
+      @content;
+    }
+  } @else if (is-pc()) {
+    @media screen and (max-width: map-get(v.$mq-config, lg) - 1) {
+      @content;
+    }
+  }
+}
+
+@mixin mq-range($bp-1, $bp-2) {
+  @if (is-sp()) {
+    @if (map-get(v.$mq-config, $bp-1) > map-get(v.$mq-config, $bp-2)) {
+      $memory: $bp-1;
+      $bp-1: $bp-2;
+      $bp-2: $memory;
+    }
+
+    @media only screen and (min-width: map-get(v.$mq-config, $bp-1)) and (max-width: map-get(v.$mq-config, $bp-2) - 1) {
+      @content;
+    }
+  } @else if (is-pc()) {
+    @if (map-get(v.$mq-config, $bp-1) < map-get(v.$mq-config, $bp-2)) {
+      $memory: $bp-1;
+      $bp-1: $bp-2;
+      $bp-2: $memory;
+    }
+
+    @media only screen and (max-width: map-get(v.$mq-config, $bp-1) - 1) and (min-width: map-get(v.$mq-config, $bp-2)) {
+      @content;
+    }
+  }
+}

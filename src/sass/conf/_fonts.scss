@@ -1,0 +1,22 @@
+@use "../vars" as v;
+@use "../utils" as u;
+
+html {
+  font-size: 62.5%; // 1rem = 10px
+}
+
+body {
+  line-height: 1.7;
+  font-family: v.$noto-sans;
+  font-weight: 400;
+  @include u.fz(1.4);
+  color: v.$black-1;
+
+  @include u.mq-md() {
+    @include u.fz(1.6);
+  }
+}
+
+a {
+  color: v.$black-1;
+}

@@ -1,0 +1,10 @@
+@use "sass:math";
+
+@mixin fz ($fz, $only-px: false) {
+  @if ($only-px) {
+    font-size: floor($fz * 10) + px;
+    font-size: math.div(floor($fz * 10), 10) + rem;
+  } @else {
+    font-size: math.div(floor($fz * 10), 10) + rem;
+  }
+}

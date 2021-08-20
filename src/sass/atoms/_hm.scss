@@ -1,0 +1,48 @@
+@use "sass:math";
+@use "../vars" as v;
+@use "../utils" as u;
+
+/**
+ * Sizes
+ */
+$hm-width: 40px;
+$hm-height: 40px;
+$hm-thickness: 7px;
+$hm-color: v.$black-1;
+$hm-dist: math.div(($hm-height - $hm-thickness), 2);
+
+/**
+ * Styles
+ */
+.hm {
+  width: $hm-width;
+  height: $hm-height;
+  @include u.flex(ver);
+  cursor: pointer;
+
+  * {
+    width: 100%;
+    height: $hm-thickness;
+    background-color: $hm-color;
+    // border-radius: $hm-thickness / 2;
+    display: block;
+    transition: all .3s;
+  }
+}
+
+/**
+ * Animations
+ */
+.hm--open {
+  *:nth-child(1) {
+    transform: translateY($hm-dist) rotate(45deg);
+  }
+
+  *:nth-child(2) {
+    opacity: 0;
+  }
+
+  *:nth-child(3) {
+    transform: translateY(-$hm-dist) rotate(-45deg);
+  }
+}

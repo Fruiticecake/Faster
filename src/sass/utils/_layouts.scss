@@ -1,0 +1,63 @@
+@mixin pos ($layout, $param: 0) {
+  position: absolute;
+
+  @if ($layout == "top") {
+    top: $param;
+    left: 50%;
+    transform: translateX(-50%);
+  } @else if ($layout == "right") {
+    top: 50%;
+    right: $param;
+    transform: translateY(-50%);
+  } @else if ($layout == "bottom") {
+    bottom: $param;
+    left: 50%;
+    transform: translateX(-50%);
+  } @else if ($layout == "left") {
+    top: 50%;
+    left: $param;
+    transform: translateY(-50%);
+  } @else if ($layout == "center") {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  } @else {
+    background-color: red;
+  }
+}
+
+@mixin flex ($layout) {
+  @if ($layout == ver) {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  } @else if ($layout == hor) {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  } @else {
+    background-color: red;
+  }
+}
+
+@mixin bg ($path) {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-image: url($path);
+  background-size: cover;
+}
+
+@mixin set-bg ($path) {
+  background-image: url($path);
+}
+
+@mixin rm-bg () {
+  background-image: url();
+}
+
+@mixin img ($path) {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-image: url($path);
+  background-size: contain;
+}

@@ -1,0 +1,13 @@
+header {
+  nav {
+    padding: 15px;
+
+    ul {
+      display: flex;
+
+      li:nth-of-type(n + 2) {
+        margin-left: 30px;
+      }
+    }
+  }
+}
