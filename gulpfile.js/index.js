@@ -1,7 +1,13 @@
 require('dotenv').config()
 
-const { buildServer } = require('./modules/server')
+const { Server } = require('./modules/server')
+const { Pug } = require('./modules/pug')
 
 exports.default = () => {
-  buildServer()
+  Server.start()
+
+  // Pug
+  Pug.compile()
+  Pug.lint()
+  Pug.watch()
 }
