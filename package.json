@@ -1,0 +1,20 @@
+{
+  "name": "pug-scss-bundle-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wataruesaki/pug-scss-bundle-template.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wataruesaki/pug-scss-bundle-template/issues"
+  },
+  "homepage": "https://github.com/wataruesaki/pug-scss-bundle-template#readme"
+}
