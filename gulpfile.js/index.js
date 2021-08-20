@@ -20,7 +20,7 @@ exports.default = () => {
   Sass.compile()
   Sass.watch()
 
-  // Bundle
+  // Bundler
   Bundler.bundle()
   Bundler.watch()
 }

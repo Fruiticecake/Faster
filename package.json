@@ -41,5 +41,8 @@
     "sass": "^1.38.0",
     "webpack": "^5.51.1",
     "webpack-stream": "^6.1.2"
+  },
+  "dependencies": {
+    "smooth-scroll": "^16.1.3"
   }
 }

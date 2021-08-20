@@ -15,7 +15,7 @@ class Bundler {
   }
 
   static watch () {
-    return watch(`${process.env.SRC_DIR}/${process.env.JS_DIR}/**/*.js`, series(this.bundle, Server.reload()))
+    return watch(`${process.env.SRC_PATH}/${process.env.JS_DIR}/**/*.js`, series(this.bundle, Server.reload()))
   }
 }
 
