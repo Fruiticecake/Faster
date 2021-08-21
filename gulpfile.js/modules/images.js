@@ -14,7 +14,7 @@ module.exports = class Image {
   static minify () {
     return src(`${process.env.SRC_PATH}/${process.env.IMG_DIR}/**/*.{jpg,jpeg,png,gif,svg}`)
       .pipe(plumber())
-      .pipe(changed(`${process.env.PUBLIC_PATH}/assets/${process.env.IMG_DIR}`))
+      .pipe(changed(`${process.env.PUBLIC_PATH}/${process.env.ASSETS_DIR}/${process.env.IMG_DIR}`))
       .pipe(imagemin([
         mozjpeg({
           quality: Number(process.env.JPG_QUALITY)
@@ -27,7 +27,7 @@ module.exports = class Image {
         }),
         imageminSvgo()
       ]))
-      .pipe(dest(`${process.env.PUBLIC_PATH}/assets/${process.env.IMG_DIR}`))
+      .pipe(dest(`${process.env.PUBLIC_PATH}/${process.env.ASSETS_DIR}/${process.env.IMG_DIR}`))
   }
 
   static watch () {
