@@ -35,7 +35,7 @@
     }
 
     if (isWp) {
-      return `<?php echo esc_url(home_url(${link}${id})); ?>`
+      return `<?php echo esc_url(home_url('${link}${id}')); ?>`
     } else {
       if (link === "/") {
         return "./index.html"

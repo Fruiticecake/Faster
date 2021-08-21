@@ -7,7 +7,7 @@ const Bundler = require('./modules/bundler')
 const Minifier = require('./modules/minifier')
 const Server = require('./modules/server')
 const Killer = require('./modules/killer')
-const { addWpBaseFiles, cpAssetsToWp } = require('./modules/fs')
+const { createWpBaseDirectories, addWpBaseFiles, cpAssetsToWp } = require('./modules/fs')
 
 const build = () => {
   Pug.compile()
@@ -39,8 +39,9 @@ exports.default = () => main()
 
 exports.restart = () => restart()
 
-exports.buildWp = () => {
-  addWpBaseFiles()
-  Pug.compileToPHP()
-  cpAssetsToWp()
+exports.build = async () => {
+  await createWpBaseDirectories()
+  await addWpBaseFiles()
+  await cpAssetsToWp()
+  await Pug.compileToPHP()
 }

@@ -5,5 +5,6 @@ head
   meta(name="viewport", content="initial-scale=1.0, width=device-width")
   link(rel="stylesheet", href!= getCssPath(`${page}.min.css`))
 
+  //- For WordPress
   if (isWp)
     <?php wp_head(); ?>
