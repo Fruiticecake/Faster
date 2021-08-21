@@ -4,7 +4,7 @@ export const waitSec = time => new Promise(resolve => setTimeout(() => resolve()
 
 export const getUa = () => window.navigator.userAgent.toLowerCase()
 
-export const getOs = () => {
+export const getOS = () => {
   if (getUa().indexOf('windows nt') !== -1) {
     return 'windows'
   }
