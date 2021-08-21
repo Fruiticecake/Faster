@@ -7,7 +7,8 @@
     "dotenv": "cp ./.env.example ./.env",
     "start": "npx gulp",
     "restart": "npx gulp restart",
-    "wp": "docker-compose up",
+    "wp:start": "docker-compose up",
+    "wp:stop": "docker-compose stop",
     "build": "npx gulp build"
   },
   "repository": {

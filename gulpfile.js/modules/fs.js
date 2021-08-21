@@ -2,10 +2,8 @@ const fs = require('fs')
 const fse = require('fs-extra')
 const content = require('./content')
 
-exports.createWpBaseDirectories = async () => {
+exports.createMyThemeFolder = async () => {
   try {
-    await fs.mkdirSync(process.env.WP_PATH)
-    await fs.mkdirSync(`${process.env.WP_PATH}/themes`)
     await fs.mkdirSync(`${process.env.WP_PATH}/themes/${process.env.WP_THEME_NAME}`)
   } catch (err) {
     console.error(err)
