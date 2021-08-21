@@ -4,7 +4,8 @@
   "description": "",
   "main": "gulpfile.js",
   "scripts": {
-    "start": "npx gulp"
+    "start": "npx gulp",
+    "killOutput": "npx gulp killOutput"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
     "@babel/preset-env": "^7.15.0",
     "babel-loader": "^8.2.2",
     "browser-sync": "^2.27.5",
+    "del": "^6.0.0",
     "dotenv": "^10.0.0",
     "eslint": "^7.32.0",
     "eslint-config-standard": "^16.0.3",

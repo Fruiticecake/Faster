@@ -4,8 +4,9 @@ require('dotenv').config()
 const Server = require('./modules/server')
 const Pug = require('./modules/pug')
 const Sass = require('./modules/sass')
-const Bundler = require('./modules/bundle')
+const Bundler = require('./modules/bundler')
 const Image = require('./modules/images')
+const Killer = require('./modules/killer')
 
 exports.default = async () => {
   /**
@@ -15,14 +16,21 @@ exports.default = async () => {
   Pug.compile()
   Pug.lint()
   Sass.compile()
-  Image.minify()
   Bundler.bundle()
+  Image.minify()
 
   /**
    * Watch
    */
   Pug.watch()
   Sass.watch()
-  Image.watch()
   Bundler.watch()
+  Image.watch()
 }
+
+/**
+ * Killer
+ */
+exports.killOutput = () => Killer.killOutput()
+exports.killAssets = () => Killer.killAssets()
+exports.killImages = () => Killer.killImages()
