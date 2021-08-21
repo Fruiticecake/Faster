@@ -11,7 +11,7 @@ module.exports = class Bundler {
   static bundle () {
     return webpackStream(webpackConfig, webpack)
       .pipe(plumber())
-      .pipe(dest(`${process.env.PUBLIC_PATH}/assets/${process.env.JS_DIR}`))
+      .pipe(dest(`${process.env.PUBLIC_PATH}/${process.env.ASSETS_DIR}/${process.env.JS_DIR}`))
   }
 
   static watch () {
