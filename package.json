@@ -4,20 +4,23 @@
   "description": "",
   "main": "gulpfile.js",
   "scripts": {
+    "dotenv": "cp ./.env.example ./.env",
     "start": "npx gulp",
-    "restart": "npx gulp restart"
+    "restart": "npx gulp restart",
+    "wp": "docker-compose up",
+    "buildWp": "npx gulp buildWp"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wataruesaki/pug-scss-bundle-template.git"
+    "url": "git+https://github.com/wataruesaki/wp-pug-sass-bundle-template.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Wataru Esaki",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/wataruesaki/pug-scss-bundle-template/issues"
+    "url": "https://github.com/wataruesaki/wp-pug-sass-bundle-template/issues"
   },
-  "homepage": "https://github.com/wataruesaki/pug-scss-bundle-template#readme",
+  "homepage": "https://github.com/wataruesaki/wp-pug-sass-bundle-template#readme",
   "devDependencies": {
     "@babel/core": "^7.15.0",
     "@babel/preset-env": "^7.15.0",
@@ -30,12 +33,14 @@
     "eslint-plugin-import": "^2.24.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0",
+    "fs-extra": "^10.0.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
     "gulp-beautify": "^3.0.0",
     "gulp-changed": "^4.0.3",
     "gulp-cli": "^2.3.0",
     "gulp-imagemin": "7.1.0",
+    "gulp-php2html": "^1.0.1",
     "gulp-plumber": "^1.2.1",
     "gulp-pug": "^5.0.0",
     "gulp-pug-linter": "^1.5.0",

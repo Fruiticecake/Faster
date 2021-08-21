@@ -5,7 +5,7 @@ const browserSync = require('browser-sync')
 module.exports = class Server {
   static build () {
     return browserSync.init({
-      port: Number(process.env.PORT),
+      port: Number(process.env.STATIC_PORT),
       notify: false,
       server: {
         baseDir: process.env.PUBLIC_PATH,
