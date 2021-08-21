@@ -3,7 +3,7 @@
 const browserSync = require('browser-sync')
 
 module.exports = class Server {
-  static start () {
+  static build () {
     return browserSync.init({
       port: Number(process.env.PORT),
       notify: false,

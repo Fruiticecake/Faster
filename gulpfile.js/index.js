@@ -1,36 +1,38 @@
 'use strict'
 
 require('dotenv').config()
-const Server = require('./modules/server')
 const Pug = require('./modules/pug')
 const Sass = require('./modules/sass')
 const Bundler = require('./modules/bundler')
-const Image = require('./modules/images')
+const Minifier = require('./modules/minifier')
+const Server = require('./modules/server')
 const Killer = require('./modules/killer')
 
-exports.default = async () => {
-  /**
-   * Boot
-   */
-  Server.start()
+const build = () => {
   Pug.compile()
   Pug.lint()
   Sass.compile()
-  Bundler.bundle()
-  Image.minify()
+  Bundler.execute()
+  Minifier.execute()
+}
 
-  /**
-   * Watch
-   */
+const watch = () => {
   Pug.watch()
   Sass.watch()
   Bundler.watch()
-  Image.watch()
+  Minifier.watch()
 }
 
-/**
- * Killer
- */
-exports.killOutput = () => Killer.killOutput()
-exports.killAssets = () => Killer.killAssets()
-exports.killImages = () => Killer.killImages()
+const main = async () => {
+  await build()
+  await Server.build()
+  await watch()
+}
+
+const restart = async () => {
+  await Killer.execute()
+  await main()
+}
+
+exports.default = () => main()
+exports.restart = () => restart()

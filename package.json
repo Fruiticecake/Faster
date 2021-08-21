@@ -5,7 +5,7 @@
   "main": "gulpfile.js",
   "scripts": {
     "start": "npx gulp",
-    "killOutput": "npx gulp killOutput"
+    "restart": "npx gulp restart"
   },
   "repository": {
     "type": "git",

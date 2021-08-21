@@ -10,8 +10,8 @@ const imageminGiflossy = require('imagemin-giflossy')
 const imageminSvgo = require('imagemin-svgo')
 const Server = require('./server')
 
-module.exports = class Image {
-  static minify () {
+module.exports = class Minifier {
+  static execute () {
     return src(`${process.env.SRC_PATH}/${process.env.IMG_DIR}/**/*.{jpg,jpeg,png,gif,svg}`)
       .pipe(plumber())
       .pipe(changed(`${process.env.PUBLIC_PATH}/${process.env.ASSETS_DIR}/${process.env.IMG_DIR}`))
@@ -31,6 +31,6 @@ module.exports = class Image {
   }
 
   static watch () {
-    return watch(`${process.env.SRC_PATH}/${process.env.IMG_DIR}/**/*.{jpg,jpeg,png,gif,svg}`, series(this.minify, Server.reload()))
+    return watch(`${process.env.SRC_PATH}/${process.env.IMG_DIR}/**/*.{jpg,jpeg,png,gif,svg}`, series(this.execute, Server.reload()))
   }
 }
