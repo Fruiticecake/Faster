@@ -2,7 +2,7 @@
 
 const browserSync = require('browser-sync')
 
-class Server {
+module.exports = class Server {
   static start () {
     return browserSync.init({
       port: process.env.PORT,
@@ -22,5 +22,3 @@ class Server {
     }
   }
 }
-
-exports.Server = Server

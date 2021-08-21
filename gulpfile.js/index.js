@@ -1,26 +1,22 @@
 'use strict'
 
 require('dotenv').config()
+const Server = require('./modules/server')
+const Pug = require('./modules/pug')
+const Sass = require('./modules/sass')
+const Bundler = require('./modules/bundle')
+const Image = require('./modules/images')
 
-const { Server } = require('./modules/server')
-const { Pug } = require('./modules/pug')
-const { Sass } = require('./modules/sass')
-const { Bundler } = require('./modules/bundle')
-
-exports.default = () => {
-  // Server
+exports.default = async () => {
   Server.start()
-
-  // Pug
   Pug.compile()
   Pug.lint()
-  Pug.watch()
-
-  // Sass
   Sass.compile()
-  Sass.watch()
-
-  // Bundler
+  Image.minify()
   Bundler.bundle()
+
+  Pug.watch()
+  Sass.watch()
+  Image.watch()
   Bundler.watch()
 }

@@ -5,9 +5,9 @@ const plumber = require('gulp-plumber')
 const webpack = require('webpack')
 const webpackStream = require('webpack-stream')
 const webpackConfig = require('../../webpack.config.js')
-const { Server } = require('./server')
+const Server = require('./server')
 
-class Bundler {
+module.exports = class Bundler {
   static bundle () {
     return webpackStream(webpackConfig, webpack)
       .pipe(plumber())
@@ -18,5 +18,3 @@ class Bundler {
     return watch(`${process.env.SRC_PATH}/${process.env.JS_DIR}/**/*.js`, series(this.bundle, Server.reload()))
   }
 }
-
-exports.Bundler = Bundler

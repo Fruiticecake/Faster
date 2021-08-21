@@ -6,9 +6,9 @@ const rename = require('gulp-rename')
 const sourcemaps = require('gulp-sourcemaps')
 const sass = require('gulp-sass')(require('sass'))
 const autoprefixer = require('gulp-autoprefixer')
-const { Server } = require('./server')
+const Server = require('./server')
 
-class Sass {
+module.exports = class Sass {
   static compile () {
     return src([`${process.env.SRC_PATH}/${process.env.SASS_DIR}/**/*.scss`, `!${process.env.SRC_PATH}/${process.env.SASS_DIR}/sass/**/_*.scss`])
       .pipe(plumber())
@@ -24,5 +24,3 @@ class Sass {
     watch(`${process.env.SRC_PATH}/${process.env.SASS_DIR}/**/*.scss`, series(this.compile, Server.reload()))
   }
 }
-
-exports.Sass = Sass
