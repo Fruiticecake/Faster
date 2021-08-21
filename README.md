@@ -1,1 +1,1 @@
-# pug-scss-bundle-template
+# wp-pug-sass-bundle-template
