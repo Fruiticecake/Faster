@@ -9,3 +9,8 @@ yarn-error.log
 
 # output
 out/
+
+# wordpress
+wp/themes/twentynineteen
+wp/themes/twentytwenty
+wp/themes/twentytwentyone
