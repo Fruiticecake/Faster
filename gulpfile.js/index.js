@@ -8,6 +8,9 @@ const Bundler = require('./modules/bundle')
 const Image = require('./modules/images')
 
 exports.default = async () => {
+  /**
+   * Boot
+   */
   Server.start()
   Pug.compile()
   Pug.lint()
@@ -15,6 +18,9 @@ exports.default = async () => {
   Image.minify()
   Bundler.bundle()
 
+  /**
+   * Watch
+   */
   Pug.watch()
   Sass.watch()
   Image.watch()
