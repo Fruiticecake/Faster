@@ -1,1 +1,9 @@
-//- Your assets are embedded in head tag.
+head
+  meta(charset="UTF-8")
+  title!= getTitle(page)
+  meta(name="description", content=meta[page].description)
+  meta(name="viewport", content="initial-scale=1.0, width=device-width")
+  link(rel="stylesheet", href!= getCssPath(`${page}.min.css`))
+
+  if (isWp)
+    <?php wp_head(); ?>

@@ -3,41 +3,37 @@ include ../utils/_index
 
 block page
 
-doctype
-html(lang=lang)
-  head
-    meta(charset="UTF-8")
-    title!= getTitle(page)
-    meta(name="description", content=meta[page].description)
-    meta(name="viewport", content="initial-scale=1.0, width=device-width")
-    include ../templates/_head
-    link(rel="stylesheet", href!= getCssPath(`${page}.min.css`))
-
-    if (isWp)
-      <?php wp_head(); ?>
-
-  mixin contents
-    include ../templates/_header
-
-    main
-      if (isWp)
-        <?php get_header(); ?>
-
-      block main
-
-      if (isWp)
-        <?php get_footer(); ?>
-
-    include ../templates/_footer
-    include ../templates/_script
-
-    if (isWp)
-      <?php wp_footer(); ?>
+if (!onlyBody)
+  doctype
+  .
+    <html lang="#{lang}">
+  include ../templates/_head
 
   if (isWp)
-    body(<?php body_class(); ?>)
-      +contents
+    .
+      <body <?php body_class(); ?>>
 
   else
-    body(class=page)
-      +contents
+    .
+      <body class="#{page}">
+
+if (!onlyBody)
+  include ../templates/_header
+  .
+    <main>
+
+if (isWp)
+  <?php get_header(); ?>
+
+block main
+
+if (isWp)
+  <?php get_footer(); ?>
+
+if (!onlyBody)
+  .
+    </main>
+  include ../templates/_footer
+  .
+      </body>
+    </html>

@@ -1,2 +1,7 @@
 footer#js-footer
   //- #code...
+
+script(src!= getJsPath("common.min.js"))
+
+if (isWp)
+  <?php wp_footer(); ?>
