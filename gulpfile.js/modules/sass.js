@@ -17,7 +17,7 @@ module.exports = class Sass {
       .pipe(autoprefixer())
       .pipe(rename({ extname: '.min.css' }))
       .pipe(sourcemaps.write('.'))
-      .pipe(dest(`${process.env.PUBLIC_PATH}/assets/css`))
+      .pipe(dest(`${process.env.PUBLIC_PATH}/${process.env.ASSETS_DIR}/css`))
   }
 
   static watch () {
