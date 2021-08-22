@@ -1,7 +1,7 @@
 'use strict'
 
 require('dotenv').config()
-const Pug = require('./modules/pug')
+const { lintPug, compilePugToHTML, compilePugToWp, watchPug } = require('./modules/pug')
 const Sass = require('./modules/sass')
 const Bundler = require('./modules/bundler')
 const Minifier = require('./modules/minifier')
@@ -10,8 +10,9 @@ const Killer = require('./modules/killer')
 const { createMyThemeFolder, addWpBaseFiles, cpAssetsToWp } = require('./modules/fs')
 
 const build = () => {
-  Pug.lint()
-  Pug.compile()
+  lintPug()
+  compilePugToHTML()
+
   Sass.lint()
   Sass.compile()
   Bundler.bundle()
@@ -19,7 +20,8 @@ const build = () => {
 }
 
 const watch = () => {
-  Pug.watch()
+  watchPug()
+
   Sass.watch()
   Bundler.watch()
   Minifier.watch()
@@ -44,5 +46,5 @@ exports.build = async () => {
   await createMyThemeFolder()
   await addWpBaseFiles()
   await cpAssetsToWp()
-  await Pug.compileToPHP()
+  await compilePugToWp()
 }
