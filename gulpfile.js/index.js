@@ -6,8 +6,7 @@ const { lintPug, compilePugToHTML, compilePugToWp, watchPug } = require('./modul
 const { lintSass, compileSassToCSS, watchSass } = require('./modules/sass')
 const { bundleJS, watchJS } = require('./modules/bundle')
 const { minifyImages, watchImages } = require('./modules/images')
-
-const Killer = require('./modules/killer')
+const { killOut } = require('./modules/kill')
 const { createMyThemeFolder, addWpBaseFiles, cpAssetsToWp } = require('./modules/fs')
 
 const build = () => {
@@ -33,7 +32,7 @@ const main = async () => {
 }
 
 const restart = async () => {
-  await Killer.killOut()
+  await killOut()
   await main()
 }
 
