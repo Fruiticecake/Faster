@@ -29,21 +29,21 @@
 @mixin flex ($layout) {
   @if ($layout == ver) {
     display: flex;
-    justify-content: space-between;
     flex-direction: column;
+    justify-content: space-between;
   } @else if ($layout == hor) {
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
+    justify-content: space-between;
   } @else {
     background-color: red;
   }
 }
 
 @mixin bg ($path) {
-  background-position: center center;
-  background-repeat: no-repeat;
   background-image: url($path);
+  background-repeat: no-repeat;
+  background-position: center center;
   background-size: cover;
 }
 
@@ -56,8 +56,8 @@
 }
 
 @mixin img ($path) {
-  background-position: center center;
-  background-repeat: no-repeat;
   background-image: url($path);
+  background-repeat: no-repeat;
+  background-position: center center;
   background-size: contain;
 }

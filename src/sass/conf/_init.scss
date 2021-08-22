@@ -67,13 +67,13 @@ time,
 mark,
 audio,
 video {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  vertical-align: baseline;
   background: transparent;
   border: 0;
   outline: 0;
-  font-size: 100%;
-  vertical-align: baseline;
-  padding: 0;
-  margin: 0;
 }
 
 body {
@@ -112,24 +112,24 @@ q:after {
 }
 
 a {
-  background: transparent;
-  font-size: 100%;
-  vertical-align: baseline;
   padding: 0;
   margin: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
 }
 
 ins {
-  background-color: #ff9;
   color: #000;
   text-decoration: none;
+  background-color: #ff9;
 }
 
 mark {
-  background-color: #ff9;
   font-style: italic;
   font-weight: bold;
   color: #000;
+  background-color: #ff9;
 }
 
 del {
@@ -138,22 +138,22 @@ del {
 
 abbr[title],
 dfn[title] {
-  border-bottom: 1px dotted;
   cursor: help;
+  border-bottom: 1px dotted;
 }
 
 table {
-  border-collapse: collapse;
   border-spacing: 0;
+  border-collapse: collapse;
 }
 
 hr {
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #ccc;
   display: block;
+  height: 1px;
   padding: 0;
   margin: 1em 0;
+  border: 0;
+  border-top: 1px solid #ccc;
 }
 
 input,

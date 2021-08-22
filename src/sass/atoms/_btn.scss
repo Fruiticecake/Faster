@@ -5,13 +5,13 @@
   max-width: 240px;
   background-color: v.$black-1;
   border-radius: 5px;
-  transition: all .3s;
+  transition: all 0.3s;
 
   a {
+    display: block;
     line-height: 40px;
     color: v.$white-1;
     text-align: center;
-    display: block;
   }
 
   &:hover {

@@ -18,15 +18,16 @@ $hm-dist: math.div(($hm-height - $hm-thickness), 2);
   width: $hm-width;
   height: $hm-height;
   @include u.flex(ver);
+
   cursor: pointer;
 
   * {
+    // border-radius: $hm-thickness / 2;
+    display: block;
     width: 100%;
     height: $hm-thickness;
     background-color: $hm-color;
-    // border-radius: $hm-thickness / 2;
-    display: block;
-    transition: all .3s;
+    transition: all 0.3s;
   }
 }
 

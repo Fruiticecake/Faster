@@ -20,6 +20,7 @@ module.exports = class Pug {
   static compile () {
     return src([`${process.env.SRC_PATH}/${process.env.PUG_DIR}/**/*.pug`, `!${process.env.SRC_PATH}/${process.env.PUG_DIR}/**/_*.pug`])
       .pipe(plumber())
+      .pipe(pugLinter({ reporter: 'default' }))
       .pipe(pug({
         pretty: true
       }))
@@ -31,6 +32,7 @@ module.exports = class Pug {
   static compileToPHP () {
     return src([`${process.env.SRC_PATH}/${process.env.PUG_DIR}/**/*.pug`, `!${process.env.SRC_PATH}/${process.env.PUG_DIR}/**/_*.pug`])
       .pipe(plumber())
+      .pipe(pugLinter({ reporter: 'default' }))
       .pipe(pug({
         pretty: true
       }))
@@ -47,13 +49,7 @@ module.exports = class Pug {
       .pipe(dest(`${process.env.WP_PATH}/themes/${process.env.WP_THEME_NAME}`))
   }
 
-  static lint () {
-    return src([`${process.env.SRC_PATH}/${process.env.PUG_DIR}/**/*.pug`, `!${process.env.SRC_PATH}/${process.env.PUG_DIR}/**/_*.pug`])
-      .pipe(plumber())
-      .pipe(pugLinter({ reporter: 'default' }))
-  }
-
   static watch () {
-    return watch(`${process.env.SRC_PATH}/${process.env.PUG_DIR}/**/*.pug`, series(this.compile, this.lint, Server.reload()))
+    return watch(`${process.env.SRC_PATH}/${process.env.PUG_DIR}/**/*.pug`, series(this.compile, Server.reload()))
   }
 }

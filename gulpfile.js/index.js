@@ -11,7 +11,6 @@ const { createMyThemeFolder, addWpBaseFiles, cpAssetsToWp } = require('./modules
 
 const build = () => {
   Pug.compile()
-  Pug.lint()
   Sass.compile()
   Bundler.execute()
   Minifier.execute()

@@ -6,11 +6,11 @@ html {
 }
 
 body {
-  line-height: 1.7;
   font-family: v.$noto-sans;
   font-weight: 400;
-  @include u.fz(1.4);
+  line-height: 1.7;
   color: v.$black-1;
+  @include u.fz(1.4);
 
   @include u.mq-md() {
     @include u.fz(1.6);
