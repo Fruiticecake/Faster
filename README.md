@@ -1,5 +1,7 @@
 # wp-pug-sass-bundle-template
 
+*I'm preparing this template so you can not use this yet.
+
 ## Motivation
 
 I'm creating this template to make coding website easier.
