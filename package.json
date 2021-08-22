@@ -9,8 +9,8 @@
     "restart": "npx gulp restart",
     "wp:start": "docker-compose up",
     "wp:restart": "",
-    "wp:build": "npx gulp build",
-    "wp:stop": "docker-compose stop"
+    "wp:stop": "docker-compose stop",
+    "wp:build": "npx gulp buildWp"
   },
   "repository": {
     "type": "git",

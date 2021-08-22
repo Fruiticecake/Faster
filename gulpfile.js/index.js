@@ -9,38 +9,40 @@ const { minifyImages, watchImages } = require('./modules/images')
 const { killOut } = require('./modules/kill')
 const { createMyThemeFolder, addWpBaseFiles, cpAssetsToWp } = require('./modules/fs')
 
-const build = () => {
-  lintPug()
-  compilePugToHTML()
-  lintSass()
-  compileSassToCSS()
-  bundleJS()
-  minifyImages()
-}
+const main = () => {
+  if (process.env.ON_START_COMPILE === 'true') {
+    lintPug()
+    compilePugToHTML()
+    lintSass()
+    compileSassToCSS()
+    bundleJS()
+    minifyImages()
+  }
 
-const watch = () => {
+  upServer()
   watchPug()
   watchSass()
   watchJS()
   watchImages()
 }
 
-const main = async () => {
-  await build()
-  await upServer()
-  await watch()
-}
+/**
+ * yarn start
+ */
+exports.default = () => main()
 
-const restart = async () => {
+/**
+ * yarn restart
+ */
+exports.restart = async () => {
   await killOut()
   await main()
 }
 
-exports.default = () => main()
-
-exports.restart = () => restart()
-
-exports.build = async () => {
+/**
+ * yarn wp:build
+ */
+exports.buildWp = async () => {
   await createMyThemeFolder()
   await addWpBaseFiles()
   await cpAssetsToWp()
