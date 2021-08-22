@@ -22,8 +22,8 @@ services:
       WORDPRESS_DB_USER: root
       WORDPRESS_DB_PASSWORD: secret
     volumes:
-      - ${WP_PATH}/wordpress:/var/www/html
-      - ${WP_PATH}/themes:/var/www/html/wp-content/themes
+      - ./wp/wordpress:/var/www/html
+      - ./wp/themes:/var/www/html/wp-content/themes
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin

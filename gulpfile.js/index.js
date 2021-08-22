@@ -73,7 +73,7 @@ const watchWp = () => {
   watchWpPug()
 }
 
-exports.default = () => start
+exports.default = start
 exports.restart = restart
 exports.buildWp = buildWp
 exports.rebuildWp = rebuildWp

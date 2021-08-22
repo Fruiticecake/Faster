@@ -1,44 +1,56 @@
-# wp-pug-sass-bundle-template
+# Website template
 
-*I'm preparing this template so you can not use this yet.
+This template is for static website and WordPress.
 
 ## Motivation
 
-I'm creating this template to make coding website easier.
+I often make static website and WordPress website.
 
-My target is WordPress and static websites.
+I use a lot of packages like Pug, Sass and so on to make it easy.
+
+But building development environment takes a lot of time especially you do it for the first time.
+
+I want to make coding website faster using this template.
 
 ## Features
 
 ・Pug
 
+・Puglint
+
 ・Dart Sass
 
+・Stylelint
+
 ・Webpack
+
+・ESLint
 
 ・Gulp
 
 ・Docker
 
-・phpmyadmin
-
 ## Getting started
 
 ### Static website
 
-#### 1. Install modules
+First of all, let's make static website.
+
+This template uses Pug, Sass, Webpack and linter to make static website.
+
+#### 1. Install packages
 
 ```node
   yarn install
 ```
 
-#### 2. Generate your dotenv
+#### 2. Generate dotenv
 
 ```node
-  yarn dotenv
+  yarn genenv
 ```
 
-You can modify your settings in .env file.
+You can run the following command even if you don't edit .env file.
 
 #### 3. Start your local server
 
@@ -46,19 +58,43 @@ You can modify your settings in .env file.
   yarn start
 ```
 
-All assets are generated when you start local server.
-
+All assets will be generated in ./out folder.
 
 ### WordPress
 
-#### 1. Start your local WordPress
+Let's build local WordPress using Docker.
+
+You don't need to run the following command if you don't use WordPress.
+
+#### 1. Set theme name
+
+```node
+# .env
+WP_THEME_NAME=write theme name here
+```
+
+#### 2. Build local WordPress
 
 ```node
   yarn wp:start
 ```
 
-#### 2. Build your WordPress theme
+This command runs `docker-compose up` to build local WordPress.
+
+You can change docker settings in ./docker-compose.yml.
+
+#### 3. Generate base files of theme
 
 ```node
-  yarn build
+  yarn wp:gen
 ```
+
+The following files will be generated.
+
+・functions.php
+・index.php
+・header.php
+・footer.php
+・style.css
+
+#### 4. Watch pug to generate wordpress
