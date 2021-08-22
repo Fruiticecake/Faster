@@ -60,7 +60,12 @@ const watchPug = () => {
   watch(`${srcPath}/**/*.pug`, series(lintPug, compilePugToHTML, reloadServer))
 }
 
+const watchWpPug = () => {
+  watch(`${srcPath}/**/*.pug`, series(lintPug, compilePugToWp))
+}
+
 exports.lintPug = lintPug
 exports.compilePugToHTML = compilePugToHTML
 exports.compilePugToWp = compilePugToWp
 exports.watchPug = watchPug
+exports.watchWpPug = watchWpPug

@@ -3,7 +3,7 @@
 require('dotenv').config()
 const prompts = require('prompts')
 const { upServer } = require('./modules/server')
-const { lintPug, compilePugToHTML, watchPug } = require('./modules/pug')
+const { lintPug, compilePugToHTML, watchPug, compilePugToWp, watchWpPug } = require('./modules/pug')
 const { lintSass, compileSassToCSS, watchSass } = require('./modules/sass')
 const { bundleJS, watchJS } = require('./modules/bundle')
 const { minifyImages, watchImages } = require('./modules/images')
@@ -68,11 +68,13 @@ const rebuildWp = async () => {
 /**
  * yarn wp:watch
  */
-// const watchWp = () => {
-
-// }
+const watchWp = () => {
+  compilePugToWp()
+  watchWpPug()
+}
 
 exports.default = () => start
 exports.restart = restart
 exports.buildWp = buildWp
 exports.rebuildWp = rebuildWp
+exports.watchWp = watchWp

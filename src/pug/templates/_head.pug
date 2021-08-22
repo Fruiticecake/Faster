@@ -3,7 +3,7 @@ head
   title!= getTitle(page)
   meta(name="description", content=meta[page].description)
   meta(name="viewport", content="initial-scale=1.0, width=device-width")
-  link(rel="stylesheet", href!= getCssPath(`${page}.min.css`))
+  link(rel="stylesheet", href!= getCSSPath(`${page}.min.css`))
 
   //- For WordPress
   if (isWp)
