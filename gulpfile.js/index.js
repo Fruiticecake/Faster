@@ -1,11 +1,12 @@
 'use strict'
 
 require('dotenv').config()
+const { upServer } = require('./modules/server')
 const { lintPug, compilePugToHTML, compilePugToWp, watchPug } = require('./modules/pug')
 const { lintSass, compileSassToCSS, watchSass } = require('./modules/sass')
-const Bundler = require('./modules/bundler')
+const { bundleJS, watchJS } = require('./modules/bundle')
+
 const Minifier = require('./modules/minifier')
-const { upServer } = require('./modules/server')
 const Killer = require('./modules/killer')
 const { createMyThemeFolder, addWpBaseFiles, cpAssetsToWp } = require('./modules/fs')
 
@@ -16,7 +17,8 @@ const build = () => {
   lintSass()
   compileSassToCSS()
 
-  Bundler.bundle()
+  bundleJS()
+
   Minifier.execute()
 }
 
@@ -25,7 +27,8 @@ const watch = () => {
 
   watchSass()
 
-  Bundler.watch()
+  watchJS()
+
   Minifier.watch()
 }
 
