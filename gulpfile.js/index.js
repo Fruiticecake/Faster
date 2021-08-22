@@ -1,15 +1,19 @@
 'use strict'
 
 require('dotenv').config()
+const prompts = require('prompts')
 const { upServer } = require('./modules/server')
-const { lintPug, compilePugToHTML, compilePugToWp, watchPug } = require('./modules/pug')
+const { lintPug, compilePugToHTML, watchPug } = require('./modules/pug')
 const { lintSass, compileSassToCSS, watchSass } = require('./modules/sass')
 const { bundleJS, watchJS } = require('./modules/bundle')
 const { minifyImages, watchImages } = require('./modules/images')
-const { killOut } = require('./modules/kill')
-const { createMyThemeFolder, addWpBaseFiles, cpAssetsToWp } = require('./modules/fs')
+const { killOut, killTheme } = require('./modules/kill')
+const { mkdirMyThemeFolder, genWpBaseFiles, cpAssetsToWp } = require('./modules/fs')
 
-const main = () => {
+/**
+ * yarn start
+ */
+const start = () => {
   if (process.env.ON_START_COMPILE === 'true') {
     lintPug()
     compilePugToHTML()
@@ -27,24 +31,48 @@ const main = () => {
 }
 
 /**
- * yarn start
- */
-exports.default = () => main()
-
-/**
  * yarn restart
  */
-exports.restart = async () => {
+const restart = async () => {
   await killOut()
-  await main()
+  await start()
 }
 
 /**
  * yarn wp:build
  */
-exports.buildWp = async () => {
-  await createMyThemeFolder()
-  await addWpBaseFiles()
+const buildWp = async () => {
+  await mkdirMyThemeFolder()
+  await genWpBaseFiles()
   await cpAssetsToWp()
-  await compilePugToWp()
 }
+
+/**
+ * yarn wp:rebuild
+ */
+const rebuildWp = async () => {
+  const res = await prompts({
+    type: 'text',
+    name: 'isRun',
+    message: 'Your theme will be deleted and regenerated if you run this command. Run command? (y/N): '
+  })
+
+  if (res.isRun === 'y') {
+    await killTheme()
+    await buildWp()
+  } else {
+    console.log('Canceled command.')
+  }
+}
+
+/**
+ * yarn wp:watch
+ */
+// const watchWp = () => {
+
+// }
+
+exports.default = () => start
+exports.restart = restart
+exports.buildWp = buildWp
+exports.rebuildWp = rebuildWp
