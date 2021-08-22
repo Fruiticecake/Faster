@@ -5,31 +5,25 @@ const { upServer } = require('./modules/server')
 const { lintPug, compilePugToHTML, compilePugToWp, watchPug } = require('./modules/pug')
 const { lintSass, compileSassToCSS, watchSass } = require('./modules/sass')
 const { bundleJS, watchJS } = require('./modules/bundle')
+const { minifyImages, watchImages } = require('./modules/images')
 
-const Minifier = require('./modules/minifier')
 const Killer = require('./modules/killer')
 const { createMyThemeFolder, addWpBaseFiles, cpAssetsToWp } = require('./modules/fs')
 
 const build = () => {
   lintPug()
   compilePugToHTML()
-
   lintSass()
   compileSassToCSS()
-
   bundleJS()
-
-  Minifier.execute()
+  minifyImages()
 }
 
 const watch = () => {
   watchPug()
-
   watchSass()
-
   watchJS()
-
-  Minifier.watch()
+  watchImages()
 }
 
 const main = async () => {
