@@ -8,8 +8,8 @@ module.exports = class Server {
       port: Number(process.env.STATIC_PORT),
       notify: false,
       server: {
-        baseDir: process.env.PUBLIC_PATH,
-        index: process.env.INDEX_FILE
+        baseDir: './out',
+        index: 'index.html'
       }
     })
   }

@@ -8,13 +8,13 @@ const webpackConfig = require('../../webpack.config.js')
 const Server = require('./server')
 
 module.exports = class Bundler {
-  static execute () {
+  static bundle () {
     return webpackStream(webpackConfig, webpack)
       .pipe(plumber())
-      .pipe(dest(`${process.env.PUBLIC_PATH}/${process.env.ASSETS_DIR}/${process.env.JS_DIR}`))
+      .pipe(dest('./out/assets/js'))
   }
 
   static watch () {
-    return watch(`${process.env.SRC_PATH}/${process.env.JS_DIR}/**/*.js`, series(this.execute, Server.reload()))
+    return watch('./src/js/**/*.js', series(this.bundle, Server.reload()))
   }
 }

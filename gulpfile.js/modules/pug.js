@@ -8,6 +8,10 @@ const beautify = require('gulp-beautify')
 const pugLinter = require('gulp-pug-linter')
 const Server = require('./server')
 
+const srcPath = './src/pug'
+const destPath = './out'
+const wpDestPath = `./wp/themes/${process.env.WP_THEME_NAME}`
+
 const options = {
   indent_size: Number(process.env.HTML_INDENT_SIZE),
   max_preserve_newlines: false,
@@ -18,7 +22,7 @@ const options = {
 
 module.exports = class Pug {
   static compile () {
-    return src([`${process.env.SRC_PATH}/${process.env.PUG_DIR}/**/*.pug`, `!${process.env.SRC_PATH}/${process.env.PUG_DIR}/**/_*.pug`])
+    return src([`${srcPath}/**/*.pug`, `!${srcPath}/**/_*.pug`])
       .pipe(plumber())
       .pipe(pugLinter({ reporter: 'default' }))
       .pipe(pug({
@@ -26,13 +30,12 @@ module.exports = class Pug {
       }))
       .pipe(rename({ extname: '.html' }))
       .pipe(beautify.html(options))
-      .pipe(dest(process.env.PUBLIC_PATH))
+      .pipe(dest(destPath))
   }
 
   static compileToPHP () {
-    return src([`${process.env.SRC_PATH}/${process.env.PUG_DIR}/**/*.pug`, `!${process.env.SRC_PATH}/${process.env.PUG_DIR}/**/_*.pug`])
+    return src([`${srcPath}/**/*.pug`, `!${srcPath}/**/_*.pug`])
       .pipe(plumber())
-      .pipe(pugLinter({ reporter: 'default' }))
       .pipe(pug({
         pretty: true
       }))
@@ -46,10 +49,16 @@ module.exports = class Pug {
         path.extname = '.php'
       }))
       .pipe(beautify.html(options))
-      .pipe(dest(`${process.env.WP_PATH}/themes/${process.env.WP_THEME_NAME}`))
+      .pipe(dest(wpDestPath))
+  }
+
+  static lint () {
+    return src(`${srcPath}/**/*.pug`)
+      .pipe(plumber())
+      .pipe(pugLinter({ reporter: 'default' }))
   }
 
   static watch () {
-    return watch(`${process.env.SRC_PATH}/${process.env.PUG_DIR}/**/*.pug`, series(this.compile, Server.reload()))
+    return watch(`${srcPath}/**/*.pug`, series(this.lint, this.compile, Server.reload()))
   }
 }

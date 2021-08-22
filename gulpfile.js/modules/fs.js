@@ -1,35 +1,32 @@
 const fs = require('fs')
 const fse = require('fs-extra')
-const content = require('./content')
+const contents = require('./contents')
 
 exports.createMyThemeFolder = async () => {
   try {
-    await fs.mkdirSync(`${process.env.WP_PATH}/themes/${process.env.WP_THEME_NAME}`)
+    await fs.mkdirSync(`./wp/themes/${process.env.WP_THEME_NAME}`)
   } catch (err) {
     console.error(err)
   }
 }
 
 exports.addWpBaseFiles = () => {
-  const destPath = `${process.env.WP_PATH}/themes/${process.env.WP_THEME_NAME}`
+  const destPath = `./wp/themes/${process.env.WP_THEME_NAME}`
 
   try {
-    fs.writeFileSync(`${destPath}/functions.php`, String(content.functions))
-    fs.writeFileSync(`${destPath}/index.php`, String(content.index))
-    fs.writeFileSync(`${destPath}/header.php`, String(content.header))
-    fs.writeFileSync(`${destPath}/footer.php`, String(content.footer))
-    fs.writeFileSync(`${destPath}/style.css`, String(content.style))
+    fs.writeFileSync(`${destPath}/functions.php`, String(contents.functions))
+    fs.writeFileSync(`${destPath}/index.php`, String(contents.index))
+    fs.writeFileSync(`${destPath}/header.php`, String(contents.header))
+    fs.writeFileSync(`${destPath}/footer.php`, String(contents.footer))
+    fs.writeFileSync(`${destPath}/style.css`, String(contents.style))
   } catch (err) {
     console.error(err)
   }
 }
 
 exports.cpAssetsToWp = () => {
-  const srcPath = `${process.env.PUBLIC_PATH}/${process.env.ASSETS_DIR}`
-  const destPath = `${process.env.WP_PATH}/themes/${process.env.WP_THEME_NAME}/${process.env.ASSETS_DIR}`
-
   try {
-    fse.copySync(srcPath, destPath)
+    fse.copySync('./out/assets', `./wp/themes/${process.env.WP_THEME_NAME}/assets`)
   } catch (err) {
     console.error(err)
   }

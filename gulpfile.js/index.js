@@ -10,9 +10,11 @@ const Killer = require('./modules/killer')
 const { createMyThemeFolder, addWpBaseFiles, cpAssetsToWp } = require('./modules/fs')
 
 const build = () => {
+  Pug.lint()
   Pug.compile()
+  Sass.lint()
   Sass.compile()
-  Bundler.execute()
+  Bundler.bundle()
   Minifier.execute()
 }
 
@@ -30,7 +32,7 @@ const main = async () => {
 }
 
 const restart = async () => {
-  await Killer.execute()
+  await Killer.killOut()
   await main()
 }
 

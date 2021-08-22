@@ -10,11 +10,14 @@ const imageminGiflossy = require('imagemin-giflossy')
 const imageminSvgo = require('imagemin-svgo')
 const Server = require('./server')
 
+const srcPath = './src/images'
+const destPath = './out/assets/images'
+
 module.exports = class Minifier {
   static execute () {
-    return src(`${process.env.SRC_PATH}/${process.env.IMG_DIR}/**/*.{jpg,jpeg,png,gif,svg}`)
+    return src(`${srcPath}/**/*.{jpg,jpeg,png,gif,svg}`)
       .pipe(plumber())
-      .pipe(changed(`${process.env.PUBLIC_PATH}/${process.env.ASSETS_DIR}/${process.env.IMG_DIR}`))
+      .pipe(changed(destPath))
       .pipe(imagemin([
         mozjpeg({
           quality: Number(process.env.JPG_QUALITY)
@@ -27,10 +30,10 @@ module.exports = class Minifier {
         }),
         imageminSvgo()
       ]))
-      .pipe(dest(`${process.env.PUBLIC_PATH}/${process.env.ASSETS_DIR}/${process.env.IMG_DIR}`))
+      .pipe(dest(destPath))
   }
 
   static watch () {
-    return watch(`${process.env.SRC_PATH}/${process.env.IMG_DIR}/**/*.{jpg,jpeg,png,gif,svg}`, series(this.execute, Server.reload()))
+    return watch(`${srcPath}/**/*.{jpg,jpeg,png,gif,svg}`, series(this.execute, Server.reload()))
   }
 }

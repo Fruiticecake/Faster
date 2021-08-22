@@ -1,8 +1,8 @@
 require('dotenv').config()
 const path = require('path')
 
-const srcPath = `${process.env.SRC_PATH}/${process.env.JS_DIR}`
-const destPath = `${process.env.PUBLIC_PATH}/${process.env.ASSETS_DIR}/${process.env.JS_DIR}`
+const srcPath = './src/js'
+const destPath = './out/assets/js'
 
 /**
  * Please set script file paths you need to bundle

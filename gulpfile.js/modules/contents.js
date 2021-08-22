@@ -1,4 +1,4 @@
-const functionsContent =
+const functions =
 `<?php
 function add_my_security () {
   // Hide WordPress version
@@ -101,20 +101,20 @@ function sc_add_my_footer_files () {
 add_shortcode('add_my_footer_files', 'sc_add_my_footer_files');
 `
 
-const indexContent =
+const index =
 `<?php
 require_once('./front-page.php');
 `
 
-const headerContent =
+const header =
 `
 `
 
-const footerContent =
+const footer =
 `
 `
 
-const styleContent =
+const style =
 `/*
 Theme Name: ${process.env.WP_THEME_NAME}
 Author: author name
@@ -122,9 +122,9 @@ Author: author name
 `
 
 module.exports = {
-  functions: functionsContent,
-  index: indexContent,
-  header: headerContent,
-  footer: footerContent,
-  style: styleContent
+  functions: functions,
+  index: index,
+  header: header,
+  footer: footer,
+  style: style
 }
