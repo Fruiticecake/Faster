@@ -2,7 +2,7 @@
 
 require('dotenv').config()
 const { lintPug, compilePugToHTML, compilePugToWp, watchPug } = require('./modules/pug')
-const Sass = require('./modules/sass')
+const { lintSass, compileSassToCSS, watchSass } = require('./modules/sass')
 const Bundler = require('./modules/bundler')
 const Minifier = require('./modules/minifier')
 const { upServer } = require('./modules/server')
@@ -13,8 +13,9 @@ const build = () => {
   lintPug()
   compilePugToHTML()
 
-  Sass.lint()
-  Sass.compile()
+  lintSass()
+  compileSassToCSS()
+
   Bundler.bundle()
   Minifier.execute()
 }
@@ -22,7 +23,8 @@ const build = () => {
 const watch = () => {
   watchPug()
 
-  Sass.watch()
+  watchSass()
+
   Bundler.watch()
   Minifier.watch()
 }
