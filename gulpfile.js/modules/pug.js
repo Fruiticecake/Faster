@@ -6,7 +6,7 @@ const pug = require('gulp-pug')
 const rename = require('gulp-rename')
 const beautify = require('gulp-beautify')
 const pugLinter = require('gulp-pug-linter')
-const Server = require('./server')
+const { reloadServer } = require('./server')
 
 const srcPath = './src/pug'
 const destPath = './out'
@@ -57,7 +57,7 @@ const compilePugToWp = () => {
 }
 
 const watchPug = () => {
-  watch(`${srcPath}/**/*.pug`, series(lintPug, compilePugToHTML, Server.reload()))
+  watch(`${srcPath}/**/*.pug`, series(lintPug, compilePugToHTML, reloadServer))
 }
 
 exports.lintPug = lintPug

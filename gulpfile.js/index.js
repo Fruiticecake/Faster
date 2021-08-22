@@ -5,7 +5,7 @@ const { lintPug, compilePugToHTML, compilePugToWp, watchPug } = require('./modul
 const Sass = require('./modules/sass')
 const Bundler = require('./modules/bundler')
 const Minifier = require('./modules/minifier')
-const Server = require('./modules/server')
+const { upServer } = require('./modules/server')
 const Killer = require('./modules/killer')
 const { createMyThemeFolder, addWpBaseFiles, cpAssetsToWp } = require('./modules/fs')
 
@@ -29,7 +29,7 @@ const watch = () => {
 
 const main = async () => {
   await build()
-  await Server.build()
+  await upServer()
   await watch()
 }
 

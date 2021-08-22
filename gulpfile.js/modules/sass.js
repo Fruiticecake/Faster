@@ -7,7 +7,7 @@ const sourcemaps = require('gulp-sourcemaps')
 const sass = require('gulp-sass')(require('sass'))
 const autoprefixer = require('gulp-autoprefixer')
 const stylelint = require('gulp-stylelint')
-const Server = require('./server')
+const { reloadServer } = require('./server')
 
 const srcPath = './src/sass'
 const destPath = './out/assets/css'
@@ -34,6 +34,6 @@ module.exports = class Sass {
   }
 
   static watch () {
-    return watch(`${srcPath}/**/*.scss`, series(this.lint, this.compile, Server.reload()))
+    return watch(`${srcPath}/**/*.scss`, series(this.lint, this.compile, reloadServer))
   }
 }

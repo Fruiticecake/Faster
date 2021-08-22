@@ -5,7 +5,7 @@ const plumber = require('gulp-plumber')
 const webpack = require('webpack')
 const webpackStream = require('webpack-stream')
 const webpackConfig = require('../../webpack.config.js')
-const Server = require('./server')
+const { reloadServer } = require('./server')
 
 module.exports = class Bundler {
   static bundle () {
@@ -15,6 +15,6 @@ module.exports = class Bundler {
   }
 
   static watch () {
-    return watch('./src/js/**/*.js', series(this.bundle, Server.reload()))
+    return watch('./src/js/**/*.js', series(this.bundle, reloadServer))
   }
 }

@@ -8,7 +8,7 @@ const mozjpeg = require('imagemin-mozjpeg')
 const pngquant = require('imagemin-pngquant')
 const imageminGiflossy = require('imagemin-giflossy')
 const imageminSvgo = require('imagemin-svgo')
-const Server = require('./server')
+const { reloadServer } = require('./server')
 
 const srcPath = './src/images'
 const destPath = './out/assets/images'
@@ -34,6 +34,6 @@ module.exports = class Minifier {
   }
 
   static watch () {
-    return watch(`${srcPath}/**/*.{jpg,jpeg,png,gif,svg}`, series(this.execute, Server.reload()))
+    return watch(`${srcPath}/**/*.{jpg,jpeg,png,gif,svg}`, series(this.execute, reloadServer))
   }
 }

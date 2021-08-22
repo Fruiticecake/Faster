@@ -2,22 +2,21 @@
 
 const browserSync = require('browser-sync')
 
-module.exports = class Server {
-  static build () {
-    return browserSync.init({
-      port: Number(process.env.STATIC_PORT),
-      notify: false,
-      server: {
-        baseDir: './out',
-        index: 'index.html'
-      }
-    })
-  }
-
-  static reload () {
-    return (done) => {
-      browserSync.reload()
-      done()
+const upServer = () => {
+  browserSync.init({
+    port: Number(process.env.STATIC_PORT),
+    notify: false,
+    server: {
+      baseDir: './out',
+      index: 'index.html'
     }
-  }
+  })
 }
+
+const reloadServer = (done) => {
+  browserSync.reload()
+  done()
+}
+
+exports.upServer = upServer
+exports.reloadServer = reloadServer
