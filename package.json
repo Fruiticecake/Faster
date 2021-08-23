@@ -6,7 +6,6 @@
   "scripts": {
     "genenv": "cp ./.env.example ./.env",
     "start": "npx gulp",
-    "restart": "npx gulp restart",
     "wp:up": "docker-compose up",
     "wp:stop": "docker-compose stop",
     "wp:start": "npx gulp startWp",

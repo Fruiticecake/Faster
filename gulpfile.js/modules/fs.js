@@ -2,7 +2,7 @@ const fs = require('fs')
 const fse = require('fs-extra')
 const contents = require('./contents')
 
-const mkdirMyThemeFolder = () => {
+const mkdirTheme = () => {
   if (fs.existsSync('./wp/themes')) {
     try {
       fs.mkdirSync(`./wp/themes/${process.env.WP_THEME_NAME}`)
@@ -10,7 +10,8 @@ const mkdirMyThemeFolder = () => {
       console.error(err)
     }
   } else {
-    console.error('Please run `yarn wp:start`.')
+    console.error('Can not find /wp/themes folder.')
+    console.error('Try `yarn wp:up`.')
   }
 }
 
@@ -28,7 +29,7 @@ const genWpBaseFiles = () => {
       console.error(err)
     }
   } else {
-    console.error('Can not find theme folder.')
+    console.error(`Can not find /wp/themes/${process.env.WP_THEME_NAME} folder.`)
   }
 }
 
@@ -40,11 +41,11 @@ const cpAssetsToWp = () => {
       console.error(err)
     }
   } else {
-    console.error('Can not find out assets folder.')
-    console.error('Please run `yarn start` to generate out assets.')
+    console.error('Can not find /out/assets folder.')
+    console.error('Try `yarn start` to generate /out/assets folder.')
   }
 }
 
-exports.mkdirMyThemeFolder = mkdirMyThemeFolder
+exports.mkdirTheme = mkdirTheme
 exports.genWpBaseFiles = genWpBaseFiles
 exports.cpAssetsToWp = cpAssetsToWp
