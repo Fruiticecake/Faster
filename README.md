@@ -76,7 +76,7 @@ WP_THEME_NAME=write theme name here
 #### 2. Build local WordPress
 
 ```node
-  yarn wp:start
+  yarn wp:up
 ```
 
 This command runs `docker-compose up` to build local WordPress.

@@ -66,27 +66,27 @@ const startWp = () => {
 }
 
 /**
- * yarn wp:build
+ * yarn wp:gen
  *
  * 1. make theme folder
  * 2. generate theme base files
  * 3. copy assets from /out
  */
-const buildWp = async () => {
+const genWp = async () => {
   await mkdirMyThemeFolder()
   await genWpBaseFiles()
   await cpAssetsToWp()
 }
 
 /**
- * yarn wp:rebuild
+ * yarn wp:regen
  *
  * 1. delete /wp/themes/theme
  * 2. make theme folder
  * 3. generate theme base files
  * 4. copy assets from /out
  */
-const rebuildWp = async () => {
+const regenWp = async () => {
   const res = await prompts({
     type: 'text',
     name: 'isRun',
@@ -95,7 +95,7 @@ const rebuildWp = async () => {
 
   if (res.isRun === 'y') {
     await killTheme()
-    await buildWp()
+    await genWp()
   } else {
     console.log('Canceled command.')
   }
@@ -104,5 +104,5 @@ const rebuildWp = async () => {
 exports.default = start
 exports.restart = restart
 exports.startWp = startWp
-exports.buildWp = buildWp
-exports.rebuildWp = rebuildWp
+exports.genWp = genWp
+exports.regenWp = regenWp

@@ -10,8 +10,8 @@
     "wp:up": "docker-compose up",
     "wp:stop": "docker-compose stop",
     "wp:start": "npx gulp startWp",
-    "wp:build": "npx gulp buildWp",
-    "wp:rebuild": "npx gulp rebuildWp"
+    "wp:gen": "npx gulp genWp",
+    "wp:regen": "npx gulp regenWp"
   },
   "repository": {
     "type": "git",
