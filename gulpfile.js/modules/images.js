@@ -11,9 +11,8 @@ const imageminSvgo = require('imagemin-svgo')
 const { reloadServer } = require('./server')
 
 const srcPath = './src/images'
-const destPath = './out/assets/images'
 
-const minifyImages = () => {
+const minify = (destPath) => {
   return src(`${srcPath}/**/*.{jpg,jpeg,png,gif,svg}`)
     .pipe(plumber())
     .pipe(changed(destPath))
@@ -32,9 +31,19 @@ const minifyImages = () => {
     .pipe(dest(destPath))
 }
 
+const minifyImages = () => minify('./out/assets/images')
+
+const minifyWpImages = () => minify(`./wp/themes/${process.env.WP_THEME_NAME}/assets/images`)
+
 const watchImages = () => {
   watch(`${srcPath}/**/*.{jpg,jpeg,png,gif,svg}`, series(minifyImages, reloadServer))
 }
 
+const watchWpImages = () => {
+  watch(`${srcPath}/**/*.{jpg,jpeg,png,gif,svg}`, minifyWpImages)
+}
+
 exports.minifyImages = minifyImages
+exports.minifyWpImages = minifyWpImages
 exports.watchImages = watchImages
+exports.watchWpImages = watchWpImages
