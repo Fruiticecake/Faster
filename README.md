@@ -1,10 +1,10 @@
-<h1 style="text-align: center;">Faster</h1>
+# Faster
 
 Faster is template which makes coding static website and WordPress faster.
 
 ## Motivation
 
-I often code static website and WordPress website and use a lot of great packages to make it easy.
+I often code static website and WordPress website and use a lot of packages to make it easy.
 
 Built development environment and coding WordPress theme contains a lot of routine works.
 
@@ -14,23 +14,43 @@ So I decided to create template which resolves the above problem.
 
 ## Features
 
+I use the following great packages.
+
 ・Pug
+
+[https://github.com/pugjs/pug](https://github.com/pugjs/pug)
 
 ・Puglint
 
+[https://github.com/pugjs/pug-lint](https://github.com/pugjs/pug-lint)
+
 ・Sass
+
+[https://github.com/sass/sass](https://github.com/sass/sass)
 
 ・Stylelint
 
+[https://github.com/stylelint/stylelint](https://github.com/stylelint/stylelint)
+
 ・Webpack
+
+[https://github.com/webpack/webpack](https://github.com/webpack/webpack)
 
 ・ESLint
 
+[https://github.com/eslint/eslint](https://github.com/eslint/eslint)
+
 ・Editorconfig
+
+[https://editorconfig.org/](https://editorconfig.org/)
 
 ・Gulp
 
-・Docker
+[https://github.com/gulpjs/gulp](https://github.com/gulpjs/gulp)
+
+・Docker compose
+
+[https://github.com/docker/compose](https://github.com/docker/compose)
 
 ## Getting started
 
@@ -60,6 +80,8 @@ You can run the following command even if you don't edit .env file.
   yarn start
 ```
 
+Open [http://localhost:8080](http://localhost:8080).
+
 Assets will be generated in /out folder.
 
 They are generated automatically when you change source files.
@@ -87,7 +109,7 @@ This command runs `docker-compose up` internally to build local WordPress.
 
 #### 3. Open local WordPress
 
-Open `http://localhost:8081`.
+Open [http://localhost:8081](http://localhost:8081).
 
 WordPress will be shown in your browser.
 
@@ -152,18 +174,22 @@ Generated files are here.
 
 Task runner is here.
 
-## Pug
+## Settings
 
-## Sass
+### Pug
 
-## Stylelint
+### Puglint
 
-## Webpack
+### Sass
 
-## Eslint
+### Stylelint
 
-## Editorconfig
+### Webpack
 
-## Gulp
+### ESLint
 
-## Docker
+### Editorconfig
+
+### Optimizing images
+
+### Docker compose
