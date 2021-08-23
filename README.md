@@ -6,13 +6,11 @@ Use Pug, Sass, Webpack, Linter, Gulp, Docker and so on.
 
 ## Motivation
 
-I often code static website and WordPress website and use a lot of packages to make it easy.
+I often code static website and WordPress website and use a lot of packages.
 
-Built development environment and coding WordPress theme contains a lot of routine works.
+Built development environment and coding WordPress theme contains a lot of routine works I hate to death.
 
-But I don't like routine works to death.
-
-So I decided to create template which resolves it.
+I'm developing this template to make it easy.
 
 ## Table of contents
 
@@ -60,15 +58,15 @@ Local phpMyAdmin port number.
 
 #### e.g. `true`
 
-Delete `/out` when run `yarn start`.
+Delete `/out` when you run `yarn start`.
 
-Delete `/wp/themes/your-theme/assets` when run `yarn wp:start`.
+Delete `/wp/themes/your-theme/assets` when you run `yarn wp:start`.
 
 ### ON_START_GENERATE: `boolean`
 
 #### e.g. `true`
 
-Assets are generated when run `yarn start` or `yarn wp:start`.
+Assets are generated when you run `yarn start` or `yarn wp:start`.
 
 ### WP_THEME_NAME: `string`
 
@@ -82,9 +80,9 @@ Indent size of HTML compiled.
 
 Webpack bundle mode.
 
-Set `development` when develop.
+Set `development` when you develop.
 
-Set `production` when deploy.
+Set `production` when you deploy.
 
 ### JPG_QUALITY: `number`
 
@@ -108,7 +106,7 @@ Quality of gif images optimized.
 
 #### e.g. `true`
 
-Embed WordPress tags when compile pug.
+Embed WordPress tags into HTML compiled.
 
 ### onlyBody: boolean
 
@@ -156,7 +154,7 @@ const entries = {
 }
 ```
 
-You need to set bundle JavaScript file paths in `entries` variable.
+You need to set bundle JavaScript file paths in `entries`.
 
 ## Linter
 
@@ -281,7 +279,7 @@ They are generated automatically when you change source files.
 
 WordPress base files are generated.
 
-You can't run if you have `/wp/themes/your-theme`
+You can't run the above command if you have `/wp/themes/your-theme`
 
 You should run `yarn wp:regen` if you regenerate base files.
 
@@ -305,7 +303,7 @@ The following files will be generated in `/wp/themes/your-theme`.
 
 ### `yarn wp:regen`
 
-Run `yarn wp:gen` after delete `/wp/themes/your-theme`.
+You should run the above command if you need to run `yarn wp:gen` again.
 
 ## Packages
 
