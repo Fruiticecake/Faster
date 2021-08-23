@@ -10,7 +10,6 @@ const stylelint = require('gulp-stylelint')
 const { reloadServer } = require('./server')
 
 const srcPath = './src/sass'
-const destPath = './out/assets/css'
 
 const lintSass = () => {
   return src(`${srcPath}/**/*.scss`)
@@ -21,7 +20,7 @@ const lintSass = () => {
     }))
 }
 
-const compileSassToCSS = () => {
+const compileSass = (destPath) => {
   return src([`${srcPath}/**/*.scss`, `!${srcPath}/**/_*.scss`])
     .pipe(plumber())
     .pipe(sourcemaps.init())
@@ -32,10 +31,20 @@ const compileSassToCSS = () => {
     .pipe(dest(destPath))
 }
 
+const compileSassToCSS = () => compileSass('./out/assets/css')
+
+const compileSassToWp = () => compileSass(`./wp/themes/${process.env.WP_THEME_NAME}/assets/css`)
+
 const watchSass = () => {
   watch(`${srcPath}/**/*.scss`, series(lintSass, compileSassToCSS, reloadServer))
 }
 
+const watchWpSass = () => {
+  watch(`${srcPath}/**/*.scss`, series(lintSass, compileSassToWp))
+}
+
 exports.lintSass = lintSass
 exports.compileSassToCSS = compileSassToCSS
+exports.compileSassToWp = compileSassToWp
 exports.watchSass = watchSass
+exports.watchWpSass = watchWpSass

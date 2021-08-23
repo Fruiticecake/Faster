@@ -49,7 +49,6 @@ const compilePugToWp = () => {
       } else {
         path.basename = `page-${path.basename}`
       }
-
       path.extname = '.php'
     }))
     .pipe(beautify.html(options))

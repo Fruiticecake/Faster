@@ -4,14 +4,14 @@
   "description": "",
   "main": "gulpfile.js",
   "scripts": {
-    "dotenv": "cp ./.env.example ./.env",
+    "genenv": "cp ./.env.example ./.env",
     "start": "npx gulp",
     "restart": "npx gulp restart",
-    "wp:start": "docker-compose up",
+    "wp:up": "docker-compose up",
     "wp:stop": "docker-compose stop",
+    "wp:start": "npx gulp startWp",
     "wp:build": "npx gulp buildWp",
-    "wp:rebuild": "npx gulp rebuildWp",
-    "wp:watch": "npx gulp watchWp"
+    "wp:rebuild": "npx gulp rebuildWp"
   },
   "repository": {
     "type": "git",

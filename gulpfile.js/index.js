@@ -4,7 +4,7 @@ require('dotenv').config()
 const prompts = require('prompts')
 const { upServer } = require('./modules/server')
 const { lintPug, compilePugToHTML, watchPug, compilePugToWp, watchWpPug } = require('./modules/pug')
-const { lintSass, compileSassToCSS, watchSass } = require('./modules/sass')
+const { lintSass, compileSassToCSS, watchSass, compileSassToWp, watchWpSass } = require('./modules/sass')
 const { bundleJS, watchJS } = require('./modules/bundle')
 const { minifyImages, watchImages } = require('./modules/images')
 const { killOut, killTheme } = require('./modules/kill')
@@ -12,6 +12,10 @@ const { mkdirMyThemeFolder, genWpBaseFiles, cpAssetsToWp } = require('./modules/
 
 /**
  * yarn start
+ *
+ * 1. generate assets in /out
+ * 2. up local server
+ * 3. watch source files
  */
 const start = () => {
   if (process.env.ON_START_COMPILE === 'true') {
@@ -32,6 +36,11 @@ const start = () => {
 
 /**
  * yarn restart
+ *
+ * 1. delete /out
+ * 2. generate assets in /out
+ * 3. up local server
+ * 4. watch source files
  */
 const restart = async () => {
   await killOut()
@@ -39,7 +48,29 @@ const restart = async () => {
 }
 
 /**
+ * yarn wp:start
+ *
+ * 1. generate assets in /wp/themes/theme
+ * 2. watch source files
+ */
+const startWp = () => {
+  if (process.env.ON_START_COMPILE === 'true') {
+    lintPug()
+    compilePugToWp()
+    lintSass()
+    compileSassToWp()
+  }
+
+  watchWpPug()
+  watchWpSass()
+}
+
+/**
  * yarn wp:build
+ *
+ * 1. make theme folder
+ * 2. generate theme base files
+ * 3. copy assets from /out
  */
 const buildWp = async () => {
   await mkdirMyThemeFolder()
@@ -49,6 +80,11 @@ const buildWp = async () => {
 
 /**
  * yarn wp:rebuild
+ *
+ * 1. delete /wp/themes/theme
+ * 2. make theme folder
+ * 3. generate theme base files
+ * 4. copy assets from /out
  */
 const rebuildWp = async () => {
   const res = await prompts({
@@ -65,16 +101,8 @@ const rebuildWp = async () => {
   }
 }
 
-/**
- * yarn wp:watch
- */
-const watchWp = () => {
-  compilePugToWp()
-  watchWpPug()
-}
-
 exports.default = start
 exports.restart = restart
+exports.startWp = startWp
 exports.buildWp = buildWp
 exports.rebuildWp = rebuildWp
-exports.watchWp = watchWp
