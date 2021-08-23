@@ -1,4 +1,4 @@
-# Faster
+<h1 style="text-align: center;">Faster</h1>
 
 Faster is template which makes coding static website and WordPress faster.
 
@@ -71,8 +71,8 @@ You don't need to run the following command if you don't use WordPress.
 #### 1. Set theme name
 
 ```node
-# .env
-WP_THEME_NAME=theme-name
+  .env
+  WP_THEME_NAME=theme-name
 ```
 
 #### 2. Up local WordPress
@@ -120,6 +120,13 @@ The following files will be generated in /wp/themes/your-theme folder.
 ・assets/**/*
 
 #### 6. Start WordPress assets compiler
+
+You should set `isWp = true` when you generate WordPress assets.
+
+```pug
+  /src/pug/config/_index.pug
+  const isWp = true
+```
 
 ```node
   yarn wp:start
