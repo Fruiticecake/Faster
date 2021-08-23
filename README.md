@@ -102,7 +102,7 @@ Max quality of png images optimized.
 
 Quality of gif images optimized.
 
-## `src/pug/config/_index.pug`
+## `/src/pug/config/_index.pug`
 
 ### isWp: boolean
 
@@ -133,10 +133,6 @@ const meta = {
 
 #### Limits
 
-`page-name` must be same as `- const page` in `/src/pug/*.pug`.
-
-`page-name` is a variable which is embedded into body class and is used to include the above meta data.
-
 ```pug
 /src/pug/*.pug
 extends ./layouts/_index
@@ -148,13 +144,23 @@ block main
   //- #code...
 ```
 
+`page-name` must be same as `- const page` in `/src/pug/*.pug`.
+
+`page-name` is a variable which is embedded into body class and is used to include the above meta data.
+
+## `/webpack.config.js`
+
+```js
+const entries = {
+  common: `${srcPath}/common.js`
+}
+```
+
+You need to set bundle JavaScript file paths in `entries` variable.
+
 ## Linter
 
 I show linter setting file paths.
-
-### Webpack
-
-`/webpack.config.js`
 
 ### Puglint
 
