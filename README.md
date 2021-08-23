@@ -235,11 +235,19 @@ Install all packages.
 
 Local server for static website is started.
 
-You should set `isWp=false` when develop static website.
+You should set `isWp=false` when you develop static website.
 
-Assets will be generated in /out/assets.
+The following assets will be generated.
 
 They are generated automatically when you change source files.
+
+・`/out/*.html`
+
+・`/out/assets/css/*.css`
+
+・`/out/assets/js/*.js`
+
+・`/out/assets/images/*.{jpg,jpeg,png,gif,svg}`
 
 ### `yarn wp:up`
 
@@ -257,9 +265,17 @@ Local WordPress, MariaDB and phpMyAdmin will be stopped.
 
 ### `yarn wp:start`
 
-Assets will be generated in `/wp/themes/your-theme/assets`.
+The following assets will be generated.
 
 They are generated automatically when you change source files.
+
+・`/wp/themes/your-theme/*.php`
+
+・`/wp/themes/your-theme/assets/css/*.css`
+
+・`/wp/themes/your-theme/assets/js/*.js`
+
+・`/wp/themes/your-theme/assets/images/*.{jpg,jpeg,png,gif,svg}`
 
 ### `yarn wp:gen`
 
