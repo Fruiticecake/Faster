@@ -1,6 +1,8 @@
 # Faster
 
-Faster is template which makes coding static website and WordPress faster.
+Faster is template which makes coding static website and WordPress website faster.
+
+Use Pug, Sass, Webpack, Linter, Gulp, Docker and so on.
 
 ## Motivation
 
@@ -10,120 +12,258 @@ Built development environment and coding WordPress theme contains a lot of routi
 
 But I don't like routine works to death.
 
-So I decided to create template which resolves the above problem.
+So I decided to create template which resolves it.
 
-## Features
+## Table of contents
 
-I use the following great packages.
+1. [Installation](#installation)
 
-・Pug
+2. [Configuration](#configuration)
 
-[https://github.com/pugjs/pug](https://github.com/pugjs/pug)
+3. [Static website](#static-website)
 
-・Puglint
+4. [WordPress](#wordpress)
 
-[https://github.com/pugjs/pug-lint](https://github.com/pugjs/pug-lint)
+5. [Commands](#commands)
 
-・Sass
+6. [Packages](#packages)
 
-[https://github.com/sass/sass](https://github.com/sass/sass)
+## Installation
 
-・Stylelint
+Click `Use this template` green button and then create your repository.
 
-[https://github.com/stylelint/stylelint](https://github.com/stylelint/stylelint)
-
-・Webpack
-
-[https://github.com/webpack/webpack](https://github.com/webpack/webpack)
-
-・ESLint
-
-[https://github.com/eslint/eslint](https://github.com/eslint/eslint)
-
-・Editorconfig
-
-[https://editorconfig.org/](https://editorconfig.org/)
-
-・Gulp
-
-[https://github.com/gulpjs/gulp](https://github.com/gulpjs/gulp)
-
-・Docker compose
-
-[https://github.com/docker/compose](https://github.com/docker/compose)
-
-## Getting started
-
-You need to code static website at first.
-
-And then generate WordPress theme.
-
-### Static website
-
-#### 1. Install packages
-
-```node
-  yarn install
+```zsh
+yarn install
 ```
 
-#### 2. Generate dotenv
+## Configuration
 
-```node
-  yarn genenv
+```zsh
+yarn genenv
 ```
 
-You can run the following command even if you don't edit .env file.
+## `.env`
 
-#### 3. Start local server
+### STATIC_PORT: `number`
 
-```node
-  yarn start
+Local server port number.
+
+### WP_PORT: `number`
+
+Local WordPress port number.
+
+### PHP_MY_ADMIN_PORT: `number`
+
+Local phpMyAdmin port number.
+
+### ON_START_CLEAN_UP: `boolean`
+
+#### e.g. `true`
+
+Delete `/out` when run `yarn start`.
+
+Delete `/wp/themes/your-theme/assets` when run `yarn wp:start`.
+
+### ON_START_GENERATE: `boolean`
+
+#### e.g. `true`
+
+Assets are generated when run `yarn start` or `yarn wp:start`.
+
+### WP_THEME_NAME: `string`
+
+WordPress theme name.
+
+### HTML_INDENT_SIZE: `number`
+
+Indent size of HTML compiled.
+
+### JS_BUNDLE_MODE: `development | production`
+
+Webpack bundle mode.
+
+Set `development` when develop.
+
+Set `production` when deploy.
+
+### JPG_QUALITY: `number`
+
+Quality of jpeg images optimized.
+
+### PNG_QUALITY_MIN: `number`
+
+Min quality of png images optimized.
+
+### PNG_QUALITY_MAX: `number`
+
+Max quality of png images optimized.
+
+### GIF_QUALITY: `number`
+
+Quality of gif images optimized.
+
+## `src/pug/config/_index.pug`
+
+### isWp: boolean
+
+#### e.g. `true`
+
+Embed WordPress tags when compile pug.
+
+### onlyBody: boolean
+
+#### e.g. `true`
+
+Compile only body pug.
+
+### lang: string
+
+lang attribute of html tag.
+
+### meta: object
+
+```pug
+const meta = {
+  page-name: {
+    title: "page title",
+    description: "page description"
+  },
+}
 ```
 
-Open [http://localhost:8080](http://localhost:8080).
+#### Limits
 
-Assets will be generated in /out folder.
+`page-name` must be same as `- const page` in `/src/pug/*.pug`.
 
-They are generated automatically when you change source files.
+`page-name` is a variable which is embedded into body class and is used to include the above meta data.
 
-### WordPress
+```pug
+/src/pug/*.pug
+extends ./layouts/_index
+
+block page
+  - const page = "page-name"
+
+block main
+  //- #code...
+```
+
+## Linter
+
+I show linter setting file paths.
+
+### Webpack
+
+`/webpack.config.js`
+
+### Puglint
+
+`/.pug-lintrc`
+
+### Stylelint
+
+`/.stylelintrc`
+
+### ESLint
+
+`/.eslintrc`
+
+### Editorconfig
+
+`/.editorconfig`
+
+## Docker
+
+`/docker-compose.yml`.
+
+## Static website
+
+```zsh
+yarn start
+```
+
+Visit [http://localhost:8080](http://localhost:8080).
+
+## WordPress
 
 You don't need to run the following command if you don't use WordPress.
 
-#### 1. Set theme name
+### Set theme name
 
 ```node
-  .env
-  WP_THEME_NAME=theme-name
+.env
+WP_THEME_NAME=theme-name
 ```
 
-#### 2. Up local WordPress
+### Start local WordPress
 
 ```node
-  yarn wp:up
+yarn wp:up
 ```
 
-This command runs `docker-compose up` internally to build local WordPress.
+### Set up local WordPress
 
-/wp folder will be generated.
+Visit [http://localhost:8081](http://localhost:8081).
 
-#### 3. Open local WordPress
+### Generate base files
 
-Open [http://localhost:8081](http://localhost:8081).
+```zsh
+yarn wp:gen
+```
 
-WordPress will be shown in your browser.
+### Start WordPress assets generator
 
-#### 4. Set up local WordPress
-
-Set up your local WordPress in your browser.
-
-#### 5. Generate theme base files
+Set `isWp = true` in `/src/pug/config/_index.pug`.
 
 ```node
-  yarn wp:gen
+  yarn wp:start
 ```
 
-The following files will be generated in /wp/themes/your-theme folder.
+## Commands
+
+### `yarn install`
+
+Install all packages.
+
+### `yarn start`
+
+Local server for static website is started.
+
+You should set `isWp=false` when develop static website.
+
+Assets will be generated in /out/assets.
+
+They are generated automatically when you change source files.
+
+### `yarn wp:up`
+
+`docker-compose up` is run internally.
+
+Local WordPress, MariaDB and phpMyAdmin will be started.
+
+It takes a minutes at first.
+
+### `yarn wp:stop`
+
+`docker-compose stop` is run internally.
+
+Local WordPress, MariaDB and phpMyAdmin will be stopped.
+
+### `yarn wp:start`
+
+Assets will be generated in `/wp/themes/your-theme/assets`.
+
+They are generated automatically when you change source files.
+
+### `yarn wp:gen`
+
+WordPress base files are generated.
+
+You can't run if you have `/wp/themes/your-theme`
+
+You should run `yarn wp:regen` if you regenerate base files.
+
+The following files will be generated in `/wp/themes/your-theme`.
 
 ・functions.php
 
@@ -141,55 +281,32 @@ The following files will be generated in /wp/themes/your-theme folder.
 
 ・assets/**/*
 
-#### 6. Start WordPress assets compiler
+### `yarn wp:regen`
 
-You should set `isWp = true` when you generate WordPress assets.
+Run `yarn wp:gen` after delete `/wp/themes/your-theme`.
 
-```pug
-  /src/pug/config/_index.pug
-  const isWp = true
-```
+## Packages
 
-```node
-  yarn wp:start
-```
+・[Pug](https://github.com/pugjs/pug)
 
-Assets will be generated in /wp/themes/your-theme folder.
+・[Puglint](https://github.com/pugjs/pug-lint)
 
-They are generated automatically when you change source files.
+・[Sass](https://github.com/sass/sass)
 
-## Directories
+・[Stylelint](https://github.com/stylelint/stylelint)
 
-### /src
+・[Webpack](https://github.com/webpack/webpack)
 
-All source files are here.
+・[ESLint](https://github.com/eslint/eslint)
 
-Basically you should edit files only here.
+・Our ESLint extends [JavaScript Standard Style](https://standardjs.com/).
 
-### /out
+・[Editorconfig](https://editorconfig.org/)
 
-Generated files are here.
+・[Gulp](https://github.com/gulpjs/gulp)
 
-### /gulpfile.js
+・[Docker compose](https://github.com/docker/compose)
 
-Task runner is here.
+・[WordPress](https://github.com/WordPress/WordPress)
 
-## Settings
-
-### Pug
-
-### Puglint
-
-### Sass
-
-### Stylelint
-
-### Webpack
-
-### ESLint
-
-### Editorconfig
-
-### Optimizing images
-
-### Docker compose
+・[phpMyAdmin](https://github.com/phpmyadmin/phpmyadmin)
