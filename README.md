@@ -1,12 +1,12 @@
 # Faster
 
-Faster is template which makes coding static website and wordpress faster.
+Faster is template which makes coding static website and WordPress faster.
 
 ## Motivation
 
-I often code static website and wordpress website and use a lot of great packages to make it easy.
+I often code static website and WordPress website and use a lot of great packages to make it easy.
 
-Built development environment and coding wordpress theme contains a lot of routine works.
+Built development environment and coding WordPress theme contains a lot of routine works.
 
 But I don't like routine works to death.
 
@@ -36,7 +36,7 @@ So I decided to create template which resolves the above problem.
 
 You need to code static website at first.
 
-And then generate wordpress theme.
+And then generate WordPress theme.
 
 ### Static website
 
@@ -62,7 +62,7 @@ You can run the following command even if you don't edit .env file.
 
 Assets will be generated in /out folder.
 
-They are generated automatically when you change them.
+They are generated automatically when you change source files.
 
 ### WordPress
 
@@ -81,7 +81,7 @@ WP_THEME_NAME=theme-name
   yarn wp:up
 ```
 
-This command runs `docker-compose up` internally to build local wordpress.
+This command runs `docker-compose up` internally to build local WordPress.
 
 /wp folder will be generated.
 
@@ -127,9 +127,23 @@ The following files will be generated in /wp/themes/your-theme folder.
 
 Assets will be generated in /wp/themes/your-theme folder.
 
-They are generated automatically when you change them.
+They are generated automatically when you change source files.
 
-## Settings
+## Directories
+
+### /src
+
+All source files are here.
+
+Basically you should edit files only here.
+
+### /out
+
+Generated files are here.
+
+### /gulpfile.js
+
+Task runner is here.
 
 ## Pug
 
