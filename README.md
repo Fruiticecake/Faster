@@ -1,16 +1,16 @@
-# Website template
+# Faster
 
-This template is for static website and WordPress.
+Faster is template which makes coding static website and wordpress faster.
 
 ## Motivation
 
-I often make static website and WordPress website.
+I often code static website and wordpress website and use a lot of great packages to make it easy.
 
-I use a lot of packages like Pug, Sass and so on to make it easy.
+Built development environment and coding wordpress theme contains a lot of routine works.
 
-But building development environment takes a lot of time especially you do it for the first time.
+But I don't like routine works to death.
 
-I want to make coding website faster using this template.
+So I decided to create template which resolves the above problem.
 
 ## Features
 
@@ -18,7 +18,7 @@ I want to make coding website faster using this template.
 
 ・Puglint
 
-・Dart Sass
+・Sass
 
 ・Stylelint
 
@@ -26,17 +26,19 @@ I want to make coding website faster using this template.
 
 ・ESLint
 
+・Editorconfig
+
 ・Gulp
 
 ・Docker
 
 ## Getting started
 
+You need to code static website at first.
+
+And then generate wordpress theme.
+
 ### Static website
-
-First of all, let's make static website.
-
-This template uses Pug, Sass, Webpack and linter to make static website.
 
 #### 1. Install packages
 
@@ -52,17 +54,17 @@ This template uses Pug, Sass, Webpack and linter to make static website.
 
 You can run the following command even if you don't edit .env file.
 
-#### 3. Start your local server
+#### 3. Start local server
 
 ```node
   yarn start
 ```
 
-All assets will be generated in ./out folder.
+Assets will be generated in /out folder.
+
+They are generated automatically when you change them.
 
 ### WordPress
-
-Let's build local WordPress using Docker.
 
 You don't need to run the following command if you don't use WordPress.
 
@@ -70,31 +72,77 @@ You don't need to run the following command if you don't use WordPress.
 
 ```node
 # .env
-WP_THEME_NAME=write theme name here
+WP_THEME_NAME=theme-name
 ```
 
-#### 2. Build local WordPress
+#### 2. Up local WordPress
 
 ```node
   yarn wp:up
 ```
 
-This command runs `docker-compose up` to build local WordPress.
+This command runs `docker-compose up` internally to build local wordpress.
 
-You can change docker settings in ./docker-compose.yml.
+/wp folder will be generated.
 
-#### 3. Generate base files of theme
+#### 3. Open local WordPress
+
+Open `http://localhost:8081`.
+
+WordPress will be shown in your browser.
+
+#### 4. Set up local WordPress
+
+Set up your local WordPress in your browser.
+
+#### 5. Generate theme base files
 
 ```node
   yarn wp:gen
 ```
 
-The following files will be generated.
+The following files will be generated in /wp/themes/your-theme folder.
 
 ・functions.php
+
 ・index.php
+
 ・header.php
+
 ・footer.php
+
+・front-page.php
+
+・page-*.php
+
 ・style.css
 
-#### 4. Watch pug to generate wordpress
+・assets/**/*
+
+#### 6. Start WordPress assets compiler
+
+```node
+  yarn wp:start
+```
+
+Assets will be generated in /wp/themes/your-theme folder.
+
+They are generated automatically when you change them.
+
+## Settings
+
+## Pug
+
+## Sass
+
+## Stylelint
+
+## Webpack
+
+## Eslint
+
+## Editorconfig
+
+## Gulp
+
+## Docker
