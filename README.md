@@ -216,7 +216,7 @@ yarn wp:gen
 Set `isWp = true` in `/src/pug/config/_index.pug`.
 
 ```node
-  yarn wp:start
+yarn wp:start
 ```
 
 ## Commands
