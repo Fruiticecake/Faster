@@ -5,7 +5,7 @@ const prompts = require('prompts')
 const { upServer } = require('./modules/server')
 const { lintPug, compilePugToHTML, watchPug, compilePugToWp, watchWpPug } = require('./modules/pug')
 const { lintSass, compileSassToCSS, watchSass, compileSassToWp, watchWpSass } = require('./modules/sass')
-const { bundleJS, watchJS } = require('./modules/bundle')
+const { bundleJS, watchJS, bundleWpJS, watchWpJS } = require('./modules/bundle')
 const { minifyImages, watchImages } = require('./modules/images')
 const { killOut, killTheme } = require('./modules/kill')
 const { mkdirMyThemeFolder, genWpBaseFiles, cpAssetsToWp } = require('./modules/fs')
@@ -59,10 +59,12 @@ const startWp = () => {
     compilePugToWp()
     lintSass()
     compileSassToWp()
+    bundleWpJS()
   }
 
   watchWpPug()
   watchWpSass()
+  watchWpJS()
 }
 
 /**

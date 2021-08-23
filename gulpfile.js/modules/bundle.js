@@ -13,9 +13,21 @@ const bundleJS = () => {
     .pipe(dest('./out/assets/js'))
 }
 
+const bundleWpJS = () => {
+  webpackStream(webpackConfig, webpack)
+    .pipe(plumber())
+    .pipe(dest(`./wp/themes/${process.env.WP_THEME_NAME}/assets/js`))
+}
+
 const watchJS = () => {
   watch('./src/js/**/*.js', series(bundleJS, reloadServer))
 }
 
+const watchWpJS = () => {
+  watch('./src/js/**/*.js', series(bundleWpJS))
+}
+
 exports.bundleJS = bundleJS
+exports.bundleWpJS = bundleWpJS
 exports.watchJS = watchJS
+exports.watchWpJS = watchWpJS
