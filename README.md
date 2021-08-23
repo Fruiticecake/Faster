@@ -144,7 +144,7 @@ block main
   //- #code...
 ```
 
-`page-name` must be same as `- const page` in `/src/pug/*.pug`.
+`page-name` in `/src/pug/config/_index.pug` must be same as `- const page` in `/src/pug/*.pug`.
 
 `page-name` is a variable which is embedded into body class and is used to include the above meta data.
 
