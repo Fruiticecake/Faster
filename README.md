@@ -16,6 +16,28 @@ I'm developing Faster to resolve the following problems.
 
 ・Making WordPress theme contains a lot of routine works like embedding WordPress tags.
 
+## Prerequisites
+
+Available in Node.js 14.
+
+Use Visual Studio Code.
+
+Recommend installing the following plugins in VSCode.
+
+・pug
+
+・Sass
+
+・ESLint
+
+・DotENV
+
+・EditorConfig for VS Code
+
+・GULP
+
+・Docker
+
 ## Table of contents
 
 1. [Installation](#installation)
