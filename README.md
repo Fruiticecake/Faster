@@ -167,7 +167,7 @@ lang attribute of html tag.
 ```pug
 /src/pug/config/_index.pug
 const meta = {
-  ...
+  //- ...
   page-name: {
     title: "page title",
     description: "page description"
@@ -198,6 +198,8 @@ const entries = {
 }
 ```
 
+You need to set bundle JavaScript file paths in `entries`.
+
 ## Limits
 
 ```pug
@@ -222,8 +224,6 @@ block main
 ```
 
 You must set `home` in `/src/pug/config/_index.pug` and `/src/pug/index.pug`.
-
-You need to set bundle JavaScript file paths in `entries`.
 
 ## Linter
 
