@@ -18,19 +18,19 @@ I'm developing Faster to resolve the following problems.
 
 ## Prerequisites
 
-Available in Node.js 14.
+・Node.js 14.
 
-Use Visual Studio Code.
+・Visual Studio Code.
 
-Recommend installing the following plugins in VSCode.
+・The following plugins
 
 ・pug
 
 ・Sass
 
-・StandardJS
-
 ・ESLint
+
+・StandardJS
 
 ・EditorConfig for VS Code
 
