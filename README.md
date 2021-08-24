@@ -46,17 +46,19 @@ I'm developing Faster to resolve the following problems.
 
 2. [Configuration](#configuration)
 
-3. [Linter](#linter)
+3. [Limits](#limits)
 
-4. [Static website](#static-website)
+4. [Linter](#linter)
 
-5. [WordPress](#wordpress)
+5. [Static website](#static-website)
 
-6. [Commands](#commands)
+6. [WordPress](#wordpress)
 
-7. [Deploy](#deploy)
+7. [Commands](#commands)
 
-8. [Packages](#packages)
+8. [Deploy](#deploy)
+
+9. [Packages](#packages)
 
 ## Installation
 
