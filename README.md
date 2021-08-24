@@ -254,6 +254,8 @@ yarn wp:up
 
 Visit [http://localhost:8081](http://localhost:8081).
 
+phpMyAdmin is [here](http://localhost:8082).
+
 ### Generate base files
 
 ```zsh
