@@ -1,16 +1,20 @@
 # Faster
 
-Faster is template which makes coding static website and WordPress website faster.
+Faster is template which makes coding static website and WordPress theme faster.
 
-Use Pug, Sass, Webpack, Linter, Gulp, Docker and so on.
+Use Pug, Sass, Webpack, Linter, Gulp and Docker.
+
+Optimize images automatically.
 
 ## Motivation
 
-I often code static website and WordPress website and use a lot of packages.
+I often code static website and WordPress theme.
 
-Built development environment and coding WordPress theme contains a lot of routine works I hate to death.
+I'm developing Faster to resolve the following problems.
 
-I'm developing this template to make it easy.
+・Built development environment takes a lot of time and dull.
+
+・Making WordPress theme contains a lot of routine works like embedding WordPress tags.
 
 ## Table of contents
 
@@ -18,17 +22,21 @@ I'm developing this template to make it easy.
 
 2. [Configuration](#configuration)
 
-3. [Static website](#static-website)
+3. [Linter](#linter)
 
-4. [WordPress](#wordpress)
+4. [Static website](#static-website)
 
-5. [Commands](#commands)
+5. [WordPress](#wordpress)
 
-6. [Packages](#packages)
+6. [Commands](#commands)
+
+7. [Deploy](#deploy)
+
+8. [Packages](#packages)
 
 ## Installation
 
-Click `Use this template` green button and then create your repository.
+Click `Use this template` button and then create your repository.
 
 ```zsh
 yarn install
@@ -58,15 +66,17 @@ Local phpMyAdmin port number.
 
 #### e.g. `true`
 
-Delete `/out` when you run `yarn start`.
+Delete `/out/assets` once at first when you run `yarn start`
 
-Delete `/wp/themes/your-theme/assets` when you run `yarn wp:start`.
+Delete `/wp/themes/your-theme/assets` once at first when you run `yarn wp:start`
 
 ### ON_START_GENERATE: `boolean`
 
 #### e.g. `true`
 
-Assets are generated when you run `yarn start` or `yarn wp:start`.
+Generate `/out/assets` at first when you run `yarn start`
+
+Generate `/wp/themes/your-theme/assets` at first when you run `yarn wp:start`
 
 ### WP_THEME_NAME: `string`
 
@@ -104,15 +114,25 @@ Quality of gif images optimized.
 
 ### isWp: boolean
 
+Set `false` when you develop static website.
+
+Set `true` when you develop WordPress theme.
+
 #### e.g. `true`
 
 Embed WordPress tags into HTML compiled.
 
 ### onlyBody: boolean
 
+Set `false` when you develop static website.
+
+Set `true` when you develop WordPress theme.
+
 #### e.g. `true`
 
 Compile only body pug.
+
+You need to code `header.php` and `footer.php`.
 
 ### lang: string
 
@@ -121,7 +141,9 @@ lang attribute of html tag.
 ### meta: object
 
 ```pug
+/src/pug/config/_index.pug
 const meta = {
+  ...
   page-name: {
     title: "page title",
     description: "page description"
@@ -129,10 +151,8 @@ const meta = {
 }
 ```
 
-#### Limits
-
 ```pug
-/src/pug/*.pug
+/src/pug/*.pug excluding index.pug
 extends ./layouts/_index
 
 block page
@@ -142,9 +162,9 @@ block main
   //- #code...
 ```
 
-`page-name` in `/src/pug/config/_index.pug` must be same as `- const page` in `/src/pug/*.pug`.
+`page-name` must be same as `page` variable in `/src/pug/*.pug` excluding `index.pug`.
 
-`page-name` is a variable which is embedded into body class and is used to include the above meta data.
+`page-name` is embedded into body class and used to include meta variable from `/src/pug/config/_index.pug`.
 
 ## `/webpack.config.js`
 
@@ -153,6 +173,31 @@ const entries = {
   common: `${srcPath}/common.js`
 }
 ```
+
+## Limits
+
+```pug
+/src/pug/config/_index.pug
+const meta = {
+  home: {
+    title: "home title",
+    description: "home description"
+  },
+}
+```
+
+```pug
+/src/pug/index.pug
+extends ./layouts/_index
+
+block page
+  - const page = "home"
+
+block main
+  //- #code...
+```
+
+You must set `home` in `/src/pug/config/_index.pug` and `/src/pug/index.pug`.
 
 You need to set bundle JavaScript file paths in `entries`.
 
@@ -303,7 +348,19 @@ The following files will be generated in `/wp/themes/your-theme`.
 
 ### `yarn wp:regen`
 
-You should run the above command if you need to run `yarn wp:gen` again.
+Run `yarn wp:gen` again.
+
+## Deploy
+
+### Static website
+
+Deploy `/out` to production path.
+
+### WordPress
+
+Deploy `/wp/themes/your-theme` to production themes folder.
+
+I recommend you use [All-in-One WP Migration](https://wordpress.org/plugins/all-in-one-wp-migration/) to deploy.
 
 ## Packages
 
@@ -322,6 +379,8 @@ You should run the above command if you need to run `yarn wp:gen` again.
 ・Our ESLint extends [JavaScript Standard Style](https://standardjs.com/).
 
 ・[Editorconfig](https://editorconfig.org/)
+
+・[Imagemin](https://github.com/imagemin/imagemin)
 
 ・[Gulp](https://github.com/gulpjs/gulp)
 
