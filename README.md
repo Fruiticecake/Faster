@@ -278,7 +278,11 @@ yarn wp:up
 
 Visit [http://localhost:8081](http://localhost:8081).
 
-phpMyAdmin is [here](http://localhost:8082).
+phpMyAdmin is in [http://localhost:8082](http://localhost:8082).
+
+Username is `root`.
+
+Password is `secret`.
 
 ### Generate base files
 
