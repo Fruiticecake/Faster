@@ -28,11 +28,13 @@ Recommend installing the following plugins in VSCode.
 
 ・Sass
 
+・StandardJS
+
 ・ESLint
 
-・DotENV
-
 ・EditorConfig for VS Code
+
+・DotENV
 
 ・GULP
 
