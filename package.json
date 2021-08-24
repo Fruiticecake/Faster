@@ -1,11 +1,12 @@
 {
-  "name": "wp-pug-sass-bundle-template",
+  "name": "Faster",
   "version": "1.0.0",
-  "description": "",
+  "description": "Faster is template which makes coding static website and WordPress theme faster.",
   "main": "gulpfile.js",
   "scripts": {
     "genenv": "cp ./.env.example ./.env",
     "start": "npx gulp",
+    "wp": "yarn docker-compose up -d && yarn wp:start",
     "wp:up": "docker-compose up",
     "wp:stop": "docker-compose stop",
     "wp:start": "npx gulp startWp",
@@ -14,15 +15,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wataruesaki/wp-pug-sass-bundle-template.git"
+    "url": "git+https://github.com/wataruesaki/Faster.git"
   },
   "keywords": [],
   "author": "Wataru Esaki",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/wataruesaki/wp-pug-sass-bundle-template/issues"
+    "url": "https://github.com/wataruesaki/Faster/issues"
   },
-  "homepage": "https://github.com/wataruesaki/wp-pug-sass-bundle-template#readme",
+  "homepage": "https://github.com/wataruesaki/Faster#readme",
   "devDependencies": {
     "@babel/core": "^7.15.0",
     "@babel/preset-env": "^7.15.0",
