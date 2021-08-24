@@ -244,7 +244,7 @@ You don't need to run the following command if you don't use WordPress.
 WP_THEME_NAME=theme-name
 ```
 
-### Start local WordPress
+### Build local WordPress, local MariaDB and local phpMyAdmin
 
 ```node
 yarn wp:up
@@ -267,6 +267,16 @@ Set `isWp = true` in `/src/pug/config/_index.pug`.
 ```node
 yarn wp:start
 ```
+
+### Run `yarn wp` *from the second time
+
+You can run the above command now.
+
+Run `yarn wp:up` in the background.
+
+And then run `yarn wp:start`.
+
+You should run `yarn wp:stop` when you stop Docker.
 
 ## Commands
 
@@ -291,6 +301,14 @@ They are generated automatically when you change source files.
 ・`/out/assets/js/*.js`
 
 ・`/out/assets/images/*.{jpg,jpeg,png,gif,svg}`
+
+### `yarn wp`
+
+Run `yarn wp:up` in the background.
+
+And then run `yarn wp:start`.
+
+*You can't run if you haven't run `yarn wp:up` and `yarn wp:gen`.
 
 ### `yarn wp:up`
 
