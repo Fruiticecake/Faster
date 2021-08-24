@@ -28,7 +28,6 @@ const lintPug = () => {
 const compilePugToHTML = () => {
   return src([`${srcPath}/**/*.pug`, `!${srcPath}/**/_*.pug`])
     .pipe(plumber())
-    .pipe(pugLinter({ reporter: 'default' }))
     .pipe(pug({
       pretty: true
     }))

@@ -13,10 +13,10 @@ const { mkdirTheme, genWpBaseFiles, cpAssetsToWp } = require('./modules/fs')
 /**
  * yarn start
  *
- * 1. delete /out
- * 2. generate assets in /out
- * 3. up local server
- * 4. watch source files
+ * 1. Delete `/out` if you set `ON_START_CLEAN_UP=true` in `.env`
+ * 2. Generate `/out`
+ * 3. Start local server
+ * 4. Watch changes of `/src/pug`, `/src/sass`, `/src/js` and `/src/images`
  */
 const start = async () => {
   if (process.env.ON_START_GENERATE === 'true') {
@@ -39,9 +39,9 @@ const start = async () => {
 /**
  * yarn wp:start
  *
- * 1. delete /wp/themes/theme/assets
- * 2. generate assets in /wp/themes/theme
- * 3. watch source files
+ * 1. Delete `/wp/themes/your-theme/assets` if you set `ON_START_CLEAN_UP=true` in `.env`
+ * 2. Generate `/wp/themes/your-theme/assets`
+ * 3. Watch changes of `/src/pug`, `/src/sass`, `/src/js` and `/src/images`
  */
 const startWp = async () => {
   if (process.env.ON_START_GENERATE === 'true') {
@@ -63,9 +63,9 @@ const startWp = async () => {
 /**
  * yarn wp:gen
  *
- * 1. make theme folder
- * 2. generate theme base files
- * 3. copy assets from /out
+ * 1. Make `/wp/themes/your-theme` folder
+ * 2. Generate base files in `/wp/themes/your-theme`
+ * 3. Copy `/out/assets` to `/wp/themes/your-theme/assets`
  */
 const genWp = async () => {
   await mkdirTheme()
@@ -76,23 +76,23 @@ const genWp = async () => {
 /**
  * yarn wp:regen
  *
- * 1. delete /wp/themes/theme
- * 2. make theme folder
- * 3. generate theme base files
- * 4. copy assets from /out
+ * 1. Delete `/wp/themes/your-theme`
+ * 2. Run `yarn wp:gen`
  */
 const regenWp = async () => {
+  console.log('Your theme will be deleted and regenerated if you run.')
+
   const res = await prompts({
     type: 'text',
     name: 'isRun',
-    message: 'Your theme will be deleted and regenerated if you run this command. Run command? (y/N): '
+    message: 'Do you run seriously? (y/N): '
   })
 
   if (res.isRun === 'y') {
     await killTheme()
     await genWp()
   } else {
-    console.log('Canceled command.')
+    console.log('Canceled.')
   }
 }
 
