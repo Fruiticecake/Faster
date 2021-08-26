@@ -231,6 +231,8 @@ Set bundle JavaScript file paths in `entries`.
 
 ## Limits
 
+### Set `home` in `/src/pug/config/_index.pug` and `/src/pug/index.pug`
+
 ```pug
 /src/pug/config/_index.pug
 const meta = {
@@ -252,7 +254,15 @@ block main
   //- #code...
 ```
 
-You must set `home` in `/src/pug/config/_index.pug` and `/src/pug/index.pug`.
+### Set the same name in pug and sass excluding `/src/pug/index.pug`
+
+#### `/src/pug/index.pug`
+
+Use `/src/sass/home.scss`.
+
+#### `/src/pug/page-name.pug`
+
+Use `/src/sass/page-name.scss`.
 
 ## Linter
 
