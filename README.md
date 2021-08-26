@@ -16,15 +16,41 @@ I'm developing Faster to resolve the following problems.
 
 ・Making WordPress theme contains a lot of routine works like embedding WordPress tags.
 
-## My environment
+## Table of contents
+
+1. [Prerequisites](#prerequisites)
+
+2. [Installation](#installation)
+
+3. [Configuration](#configuration)
+
+4. [Limits](#limits)
+
+5. [Linter](#linter)
+
+6. [Static website](#static-website)
+
+7. [WordPress](#wordpress)
+
+8. [Commands](#commands)
+
+9. [Deploy](#deploy)
+
+10. [Packages](#packages)
+
+## Prerequisites
+
+### My environment
+
+・npm 6.14.13
 
 ・Node.js 14.17.3
 
 ・Docker 20.10.7
 
-・Visual Studio Code latest
+・Visual Studio Code 1.59
 
-## Visual Studio Code Plugins I use
+### Visual Studio Code Plugins I use
 
 ・pug
 
@@ -42,25 +68,38 @@ I'm developing Faster to resolve the following problems.
 
 ・Docker
 
-## Table of contents
+### `settings.json`
 
-1. [Installation](#installation)
+```json
+{
 
-2. [Configuration](#configuration)
+  ...
 
-3. [Limits](#limits)
+  /**
+   * Format
+   */
+  "editor.formatOnType": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "files.trimFinalNewlines": true,
+  "trailing-spaces.trimOnSave": true,
+  "files.trimTrailingWhitespace": false,
+  "[markdown]": {
+    "files.trimTrailingWhitespace": false
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  /**
+   * JavaScript Standard Style
+   */
+  "standard.autoFixOnSave": true,
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
 
-4. [Linter](#linter)
+  ...
 
-5. [Static website](#static-website)
-
-6. [WordPress](#wordpress)
-
-7. [Commands](#commands)
-
-8. [Deploy](#deploy)
-
-9. [Packages](#packages)
+}
+```
 
 ## Installation
 
