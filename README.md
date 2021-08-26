@@ -133,6 +133,10 @@ WordPress theme name
 
 Indent size of HTML compiled
 
+### CSS_OUTPUT_STYLE: `nested | expanded | compact | compressed`
+
+CSS compiled output style
+
 ### JS_BUNDLE_MODE: `development | production`
 
 Webpack bundle mode

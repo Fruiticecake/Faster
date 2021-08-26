@@ -24,7 +24,7 @@ const compileSass = (destPath) => {
   return src([`${srcPath}/**/*.scss`, `!${srcPath}/**/_*.scss`])
     .pipe(plumber())
     .pipe(sourcemaps.init())
-    .pipe(sass({ outputStyle: 'compressed' }))
+    .pipe(sass({ outputStyle: process.env.CSS_OUTPUT_STYLE }))
     .pipe(autoprefixer())
     .pipe(rename({ extname: '.min.css' }))
     .pipe(sourcemaps.write('.'))
