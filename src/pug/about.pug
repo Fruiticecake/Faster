@@ -1,14 +1,12 @@
 extends ./layouts/_index
+include ./components/_index
 
 block page
   - const page = "about"
 
 block main
-  h1.at-common-title-1 About page
+  +mainTitle("About page")
 
-  .at-common-btn-1: a(href!= homeUrl("/")) Home
+  +mainBtn("/", "Home")
 
-  .hm
-    div
-    div
-    div
+  +subBtn("/", "Home")

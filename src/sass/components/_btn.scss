@@ -1,0 +1,41 @@
+@use "../vars" as v;
+@use "../utils" as u;
+
+%btn {
+  max-width: 240px;
+  border-radius: 5px;
+  transition: all 0.3s;
+
+  a {
+    display: block;
+    line-height: 40px;
+    text-align: center;
+    transition: all 0.3s;
+  }
+}
+
+.main-btn {
+  @extend %btn;
+  background-color: v.$black-1;
+
+  a {
+    color: v.$white-1;
+  }
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.sub-btn {
+  @extend %btn;
+  border: 1px solid v.$black-1;
+
+  &:hover {
+    background-color: v.$black-1;
+
+    a {
+      color: v.$white-1;
+    }
+  }
+}

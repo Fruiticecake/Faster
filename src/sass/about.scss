@@ -2,13 +2,14 @@
 @use "./utils" as u;
 
 @use "./config";
-@use "./atoms";
+@use "./components";
 @use "./templates";
 
 main {
   padding: 15px;
 
-  .at-common-btn-1 {
+  .main-btn,
+  .sub-btn {
     margin-top: 30px;
   }
 
