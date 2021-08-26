@@ -6,12 +6,10 @@
   "scripts": {
     "genenv": "cp ./.env.example ./.env",
     "start": "npx gulp",
-    "wp": "docker-compose up -d && yarn wp:start",
-    "wp:up": "docker-compose up",
-    "wp:stop": "docker-compose stop",
-    "wp:start": "npx gulp startWp",
-    "wp:gen": "npx gulp genWp",
-    "wp:regen": "npx gulp regenWp"
+    "wp:gen": "docker-compose up -d && npx gulp genWp && npx gulp startWp",
+    "wp:regen": "docker-compose up -d && npx gulp regenWp && npx gulp startWp",
+    "wp:start": "docker-compose up -d && npx gulp startWp",
+    "wp:stop": "docker-compose stop"
   },
   "repository": {
     "type": "git",
