@@ -16,13 +16,15 @@ I'm developing Faster to resolve the following problems.
 
 ・Making WordPress theme contains a lot of routine works like embedding WordPress tags.
 
-## Prerequisites
+## My environment
 
-・Node.js 14.
+・Node.js 14.17.3
 
-・Visual Studio Code.
+・Docker 20.10.7
 
-・The following plugins
+・Visual Studio Code latest
+
+## Visual Studio Code Plugins I use
 
 ・pug
 
@@ -249,7 +251,7 @@ I show linter setting file paths.
 
 ## Docker
 
-`/docker-compose.yml`.
+Modify `/docker-compose.yml`.
 
 ## Static website
 
@@ -322,9 +324,7 @@ Local server for static website is started.
 
 You should set `isWp=false` when you develop static website.
 
-The following assets will be generated.
-
-They are generated automatically when you change source files.
+The following assets are generated automatically when you change source files.
 
 ・`/out/*.html`
 
@@ -334,11 +334,13 @@ They are generated automatically when you change source files.
 
 ・`/out/assets/images/*.{jpg,jpeg,png,gif,svg}`
 
+Assets are generated at first if you set `ON_START_GENERATE=true`.
+
 ### `yarn wp`
 
-Run `yarn wp:up` in the background.
+`yarn wp:up` is run in the background.
 
-And then run `yarn wp:start`.
+And then `yarn wp:start` is run.
 
 *You can't run if you haven't run `yarn wp:up` and `yarn wp:gen`.
 
@@ -358,9 +360,7 @@ Local WordPress, MariaDB and phpMyAdmin will be stopped.
 
 ### `yarn wp:start`
 
-The following assets will be generated.
-
-They are generated automatically when you change source files.
+The following assets are generated automatically when you change source files.
 
 ・`/wp/themes/your-theme/*.php`
 
@@ -370,13 +370,15 @@ They are generated automatically when you change source files.
 
 ・`/wp/themes/your-theme/assets/images/*.{jpg,jpeg,png,gif,svg}`
 
+Assets are generated at first if you set `ON_START_GENERATE=true`.
+
 ### `yarn wp:gen`
 
 WordPress base files are generated.
 
 You can't run the above command if you have `/wp/themes/your-theme`
 
-You should run `yarn wp:regen` if you regenerate base files.
+You need to run `yarn wp:regen` if you regenerate base files.
 
 The following files will be generated in `/wp/themes/your-theme`.
 
