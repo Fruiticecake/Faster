@@ -141,19 +141,19 @@ Set `development` when you develop.
 
 Set `production` when you deploy.
 
-### JPG_QUALITY: `number`
+### JPG_QUALITY: `1-100`
 
 Quality of jpeg images optimized
 
-### PNG_QUALITY_MIN: `number`
+### PNG_QUALITY_MIN: `0.00-1.00`
 
 Min quality of png images optimized
 
-### PNG_QUALITY_MAX: `number`
+### PNG_QUALITY_MAX: `0.00-1.00`
 
 Max quality of png images optimized
 
-### GIF_QUALITY: `number`
+### GIF_QUALITY: `∞`
 
 Quality of gif images optimized
 
