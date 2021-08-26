@@ -43,7 +43,7 @@
 @mixin bg ($path) {
   background-image: url($path);
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: center;
   background-size: cover;
 }
 
@@ -58,6 +58,6 @@
 @mixin img ($path) {
   background-image: url($path);
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: center;
   background-size: contain;
 }

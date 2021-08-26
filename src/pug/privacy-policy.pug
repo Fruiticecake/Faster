@@ -1,0 +1,14 @@
+extends ./layouts/_index
+include ./components/_index
+
+block page
+  - const page = "privacy-policy"
+
+block main
+  +mainTitle("Privacy policy page")
+
+  +mainBtn("/", "Home")
+
+  +subBtn("/", "Home")
+
+  .sample-bg(style!= getBgPath("sample.jpg"))

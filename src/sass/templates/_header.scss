@@ -4,6 +4,7 @@ header {
 
     ul {
       display: flex;
+      align-items: center;
 
       li {
         &:nth-of-type(n + 2) {
