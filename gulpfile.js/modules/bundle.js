@@ -7,17 +7,15 @@ const webpackStream = require('webpack-stream')
 const webpackConfig = require('../../webpack.config.js')
 const { reloadServer } = require('./server')
 
-const bundleJS = () => {
-  webpackStream(webpackConfig, webpack)
+const bundle = (destPath) => {
+  return webpackStream(webpackConfig, webpack)
     .pipe(plumber())
-    .pipe(dest('./out/assets/js'))
+    .pipe(dest(destPath))
 }
 
-const bundleWpJS = () => {
-  webpackStream(webpackConfig, webpack)
-    .pipe(plumber())
-    .pipe(dest(`./wp/themes/${process.env.WP_THEME_NAME}/assets/js`))
-}
+const bundleJS = () => bundle('./out/assets/js')
+
+const bundleWpJS = () => bundle(`./wp/themes/${process.env.WP_THEME_NAME}/assets/js`)
 
 const watchJS = () => {
   watch('./src/js/**/*.js', series(bundleJS, reloadServer))
