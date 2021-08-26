@@ -374,7 +374,7 @@ Assets are generated at first if you set `ON_START_GENERATE=true`.
 
 ### `yarn wp:gen`
 
-Local WordPress and basic theme files is generated and then start WordPress assets generator.
+Local WordPress and basic theme files are generated and then start WordPress assets generator.
 
 You need to run `yarn wp:regen` if you run `yarn wp:gen` again because of specifications.
 
@@ -398,7 +398,7 @@ The following files are generated in `/wp/themes/your-theme`.
 
 ### `yarn wp:regen`
 
-Run `yarn wp:gen` again.
+`yarn wp:gen` is run again.
 
 ### `yarn wp:start`
 
