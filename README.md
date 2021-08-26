@@ -400,12 +400,6 @@ The following files are generated in `/wp/themes/your-theme`.
 
 Run `yarn wp:gen` again.
 
-### `yarn wp:stop`
-
-`docker-compose stop` is run internally.
-
-Local WordPress and phpMyAdmin are stopped.
-
 ### `yarn wp:start`
 
 The following assets are generated automatically when you change source files.
@@ -419,6 +413,12 @@ The following assets are generated automatically when you change source files.
 ・`/wp/themes/your-theme/assets/images/*.{jpg,jpeg,png,gif,svg}`
 
 Assets are generated at first if you set `ON_START_GENERATE=true`.
+
+### `yarn wp:stop`
+
+`docker-compose stop` is run internally.
+
+Local WordPress and phpMyAdmin are stopped.
 
 ## Deploy
 
