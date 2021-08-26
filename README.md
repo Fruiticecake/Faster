@@ -1,6 +1,6 @@
 # Faster
 
-Faster is template which makes coding static website and WordPress theme faster.
+Faster makes coding static website and WordPress theme faster.
 
 Use Pug, Sass, Webpack, Linter, Gulp and Docker.
 
@@ -50,7 +50,7 @@ I'm developing Faster to resolve the following problems.
 
 ・Visual Studio Code 1.59
 
-### Visual Studio Code Plugins I use
+### Visual Studio Code Plugins
 
 ・pug
 
@@ -89,13 +89,17 @@ I'm developing Faster to resolve the following problems.
 
 ## Installation
 
-Click `Use this template` button and then create your repository.
+1. Click `Use this template` button and then create your repository.
+
+2. Run `yarn install` to install packages.
 
 ```zsh
 yarn install
 ```
 
 ## Configuration
+
+1. Run `yarn genenv` to generate .env file.
 
 ```zsh
 yarn genenv
@@ -105,43 +109,43 @@ yarn genenv
 
 ### STATIC_PORT: `number`
 
-Local server port number.
+Local server port number
 
 ### WP_PORT: `number`
 
-Local WordPress port number.
+Local WordPress port number
 
 ### PHP_MY_ADMIN_PORT: `number`
 
-Local phpMyAdmin port number.
+Local phpMyAdmin port number
 
 ### ON_START_CLEAN_UP: `boolean`
 
 #### e.g. `true`
 
-Delete `/out/assets` once at first when you run `yarn start`
+Delete `/out/assets` once at first when you run `yarn start`.
 
-Delete `/wp/themes/your-theme/assets` once at first when you run `yarn wp:start`
+Delete `/wp/themes/your-theme/assets` once at first when you run `yarn wp:start`.
 
 ### ON_START_GENERATE: `boolean`
 
 #### e.g. `true`
 
-Generate `/out/assets` at first when you run `yarn start`
+Generate `/out/assets` at first when you run `yarn start`.
 
-Generate `/wp/themes/your-theme/assets` at first when you run `yarn wp:start`
+Generate `/wp/themes/your-theme/assets` at first when you run `yarn wp:start`.
 
 ### WP_THEME_NAME: `string`
 
-WordPress theme name.
+WordPress theme name
 
 ### HTML_INDENT_SIZE: `number`
 
-Indent size of HTML compiled.
+Indent size of HTML compiled
 
 ### JS_BUNDLE_MODE: `development | production`
 
-Webpack bundle mode.
+Webpack bundle mode
 
 Set `development` when you develop.
 
@@ -149,19 +153,19 @@ Set `production` when you deploy.
 
 ### JPG_QUALITY: `number`
 
-Quality of jpeg images optimized.
+Quality of jpeg images optimized
 
 ### PNG_QUALITY_MIN: `number`
 
-Min quality of png images optimized.
+Min quality of png images optimized
 
 ### PNG_QUALITY_MAX: `number`
 
-Max quality of png images optimized.
+Max quality of png images optimized
 
 ### GIF_QUALITY: `number`
 
-Quality of gif images optimized.
+Quality of gif images optimized
 
 ## `/src/pug/config/_index.pug`
 
@@ -173,7 +177,7 @@ Set `true` when you develop WordPress theme.
 
 #### e.g. `true`
 
-Embed WordPress tags into HTML compiled.
+WordPress tags are embedded into HTML compiled.
 
 ### onlyBody: boolean
 
@@ -183,13 +187,13 @@ Set `true` when you develop WordPress theme.
 
 #### e.g. `true`
 
-Compile only body pug.
+Only body pug is compiled.
 
 You need to code `header.php` and `footer.php`.
 
 ### lang: string
 
-lang attribute of html tag.
+lang attribute of html tag
 
 ### meta: object
 
@@ -284,58 +288,69 @@ Modify `/docker-compose.yml`.
 yarn start
 ```
 
-Visit [http://localhost:8080](http://localhost:8080).
+Local server and assets generator are started.
+
+For example, `/out/*.html` is generated when you change `/src/pug/*.pug`.
 
 ## WordPress
 
 You don't need to run the following command if you don't use WordPress.
 
-### Set theme name
+### 1. Set theme name
 
 ```node
 .env
-WP_THEME_NAME=theme-name
+WP_THEME_NAME=your-theme
 ```
 
-### Build local WordPress, local MariaDB and local phpMyAdmin
+### 2. Set `isWp=true`
+
+```pug
+/src/pug/config/_index.pug
+const isWp = true
+```
+
+### 3. Build local WordPress and phpMyAdmin
 
 ```node
-yarn wp:up
-```
-
-### Set up local WordPress
-
-Visit [http://localhost:8081](http://localhost:8081).
-
-phpMyAdmin is in [http://localhost:8082](http://localhost:8082).
-
-Username is `root`.
-
-Password is `secret`.
-
-### Generate base files
-
-```zsh
 yarn wp:gen
 ```
 
-### Start WordPress assets generator
+`docker-compose up -d` is run internally and then theme basic files are generated.
 
-Set `isWp = true` in `/src/pug/config/_index.pug`.
+#### WordPress
+
+[http://localhost:8081](http://localhost:8081)
+
+Set your login information.
+
+#### phpMyAdmin
+
+[http://localhost:8082](http://localhost:8082)
+
+##### Username
+
+`root`
+
+##### Password
+
+`secret`
+
+### 4. Activate theme
+
+Activate your theme in [http://localhost:8081/wp-admin/themes.php](http://localhost:8081/wp-admin/themes.php).
+
+### 5. Start assets generator
 
 ```node
 yarn wp:start
 ```
 
-### Run `yarn wp` *from the second time
+### 6. Stop local WordPress and phpMyAdmin
 
-You can run the above command now.
-
-Run `yarn wp:up` in the background.
-
-And then run `yarn wp:start`.
-
-You should run `yarn wp:stop` when you stop Docker.
+```node
+yarn wp:stop
+```
 
 ## Commands
 
@@ -361,21 +376,33 @@ The following assets are generated automatically when you change source files.
 
 Assets are generated at first if you set `ON_START_GENERATE=true`.
 
-### `yarn wp`
+### `yarn wp:gen`
 
-`yarn wp:up` is run in the background.
+Local WordPress and basic theme files is generated and then start WordPress assets generator.
 
-And then `yarn wp:start` is run.
+You need to run `yarn wp:regen` if you run `yarn wp:gen` again because of specifications.
 
-*You can't run if you haven't run `yarn wp:up` and `yarn wp:gen`.
+The following files will be generated in `/wp/themes/your-theme`.
 
-### `yarn wp:up`
+・`functions.php`
 
-`docker-compose up` is run internally.
+・`index.php`
 
-Local WordPress, MariaDB and phpMyAdmin will be started.
+・`header.php`
 
-It takes a minutes at first.
+・`footer.php`
+
+・`front-page.php`
+
+・`page-*.php`
+
+・`style.css`
+
+・`assets`
+
+### `yarn wp:regen`
+
+Run `yarn wp:gen` again.
 
 ### `yarn wp:stop`
 
@@ -396,36 +423,6 @@ The following assets are generated automatically when you change source files.
 ・`/wp/themes/your-theme/assets/images/*.{jpg,jpeg,png,gif,svg}`
 
 Assets are generated at first if you set `ON_START_GENERATE=true`.
-
-### `yarn wp:gen`
-
-WordPress base files are generated.
-
-You can't run the above command if you have `/wp/themes/your-theme`
-
-You need to run `yarn wp:regen` if you regenerate base files.
-
-The following files will be generated in `/wp/themes/your-theme`.
-
-・functions.php
-
-・index.php
-
-・header.php
-
-・footer.php
-
-・front-page.php
-
-・page-*.php
-
-・style.css
-
-・assets/**/*
-
-### `yarn wp:regen`
-
-Run `yarn wp:gen` again.
 
 ## Deploy
 

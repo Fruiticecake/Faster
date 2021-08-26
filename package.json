@@ -6,8 +6,8 @@
   "scripts": {
     "genenv": "cp ./.env.example ./.env",
     "start": "npx gulp",
-    "wp:gen": "docker-compose up -d && npx gulp genWp && npx gulp startWp",
-    "wp:regen": "docker-compose up -d && npx gulp regenWp && npx gulp startWp",
+    "wp:gen": "docker-compose up -d && npx gulp genWp",
+    "wp:regen": "docker-compose up -d && npx gulp regenWp",
     "wp:start": "docker-compose up -d && npx gulp startWp",
     "wp:stop": "docker-compose stop"
   },
