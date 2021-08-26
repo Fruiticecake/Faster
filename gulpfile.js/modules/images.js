@@ -2,7 +2,6 @@
 
 const { src, dest, watch, series } = require('gulp')
 const plumber = require('gulp-plumber')
-const changed = require('gulp-changed')
 const imagemin = require('gulp-imagemin')
 const mozjpeg = require('imagemin-mozjpeg')
 const pngquant = require('imagemin-pngquant')
@@ -15,7 +14,6 @@ const srcPath = './src/images'
 const minify = (destPath) => {
   return src(`${srcPath}/**/*.{jpg,jpeg,png,gif,svg}`)
     .pipe(plumber())
-    .pipe(changed(destPath))
     .pipe(imagemin([
       mozjpeg({
         quality: Number(process.env.JPG_QUALITY)
