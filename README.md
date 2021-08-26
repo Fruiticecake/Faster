@@ -73,11 +73,9 @@ I'm developing Faster to resolve the following problems.
 ```json
 {
 
-  ...
+  // ...
 
-  /**
-   * Format
-   */
+  // Format
   "editor.formatOnType": true,
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
@@ -90,13 +88,11 @@ I'm developing Faster to resolve the following problems.
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  /**
-   * JavaScript Standard Style
-   */
+  // JavaScript Standard Style
   "standard.autoFixOnSave": true,
   "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
 
-  ...
+  // ...
 
 }
 ```
