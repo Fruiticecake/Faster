@@ -75,20 +75,10 @@ I'm developing Faster to resolve the following problems.
 
   // ...
 
-  // Format
-  "editor.formatOnType": true,
-  "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
-  "files.trimFinalNewlines": true,
-  "trailing-spaces.trimOnSave": true,
-  "files.trimTrailingWhitespace": false,
-  "[markdown]": {
-    "files.trimTrailingWhitespace": false
-  },
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  // JavaScript Standard Style
   "standard.autoFixOnSave": true,
   "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
 
