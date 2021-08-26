@@ -44,6 +44,8 @@ I'm developing Faster to resolve the following problems.
 
 ・npm 6.14.13
 
+・yarn 1.22.10
+
 ・Node.js 14.17.3
 
 ・Docker 20.10.7
@@ -90,7 +92,7 @@ I'm developing Faster to resolve the following problems.
 ## Installation
 
 ```zsh
-yarn install && yarn genenv
+yarn genenv && yarn install
 ```
 
 ## Configuration
@@ -133,7 +135,7 @@ WordPress theme name
 
 Indent size of HTML compiled
 
-### CSS_OUTPUT_STYLE: `nested | expanded | compact | compressed`
+### CSS_OUTPUT_STYLE: `expanded | compressed`
 
 CSS compiled output style
 
