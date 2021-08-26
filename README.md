@@ -90,11 +90,7 @@ I'm developing Faster to resolve the following problems.
 ## Installation
 
 ```zsh
-yarn install
-```
-
-```zsh
-yarn genenv
+yarn install && yarn genenv
 ```
 
 ## Configuration
@@ -117,17 +113,17 @@ Local phpMyAdmin port number
 
 #### e.g. `true`
 
-Delete `/out/assets` once at first when you run `yarn start`.
+`/out/assets` are deleted once at first when you run `yarn start`.
 
-Delete `/wp/themes/your-theme/assets` once at first when you run `yarn wp:start`.
+`/wp/themes/your-theme/assets` are deleted once at first when you run `yarn wp:start`.
 
 ### ON_START_GENERATE: `boolean`
 
 #### e.g. `true`
 
-Generate `/out/assets` at first when you run `yarn start`.
+`/out/assets` is generated at first when you run `yarn start`.
 
-Generate `/wp/themes/your-theme/assets` at first when you run `yarn wp:start`.
+`/wp/themes/your-theme/assets` is generated at first when you run `yarn wp:start`.
 
 ### WP_THEME_NAME: `string`
 
@@ -225,7 +221,7 @@ const entries = {
 }
 ```
 
-You need to set bundle JavaScript file paths in `entries`.
+Set bundle JavaScript file paths in `entries`.
 
 ## Limits
 
@@ -330,15 +326,15 @@ Set your login information.
 
 `secret`
 
-### 4. Activate theme
-
-Activate your theme in [http://localhost:8081/wp-admin/themes.php](http://localhost:8081/wp-admin/themes.php).
-
-### 5. Start assets generator
+### 4. Start assets generator
 
 ```node
 yarn wp:start
 ```
+
+### 5. Activate theme
+
+Visit [http://localhost:8081/wp-admin/themes.php](http://localhost:8081/wp-admin/themes.php).
 
 ### 6. Stop local WordPress and phpMyAdmin
 
@@ -360,13 +356,15 @@ You should set `isWp=false` when you develop static website.
 
 The following assets are generated automatically when you change source files.
 
-・`/out/*.html`
+`source file path`→`output file path`
 
-・`/out/assets/css/*.css`
+・`/src/pug/*.pug`→`/out/*.html`
 
-・`/out/assets/js/*.js`
+・`/src/sass/*.scss`→`/out/assets/css/*.css`
 
-・`/out/assets/images/*.{jpg,jpeg,png,gif,svg}`
+・`/src/js/*.js`→`/out/assets/js/*.js`
+
+・`/src/images/*.{jpg,jpeg,png,gif,svg}`→`/out/assets/images/*.{jpg,jpeg,png,gif,svg}`
 
 Assets are generated at first if you set `ON_START_GENERATE=true`.
 
@@ -376,7 +374,7 @@ Local WordPress and basic theme files is generated and then start WordPress asse
 
 You need to run `yarn wp:regen` if you run `yarn wp:gen` again because of specifications.
 
-The following files will be generated in `/wp/themes/your-theme`.
+The following files are generated in `/wp/themes/your-theme`.
 
 ・`functions.php`
 
@@ -402,7 +400,7 @@ Run `yarn wp:gen` again.
 
 `docker-compose stop` is run internally.
 
-Local WordPress, MariaDB and phpMyAdmin will be stopped.
+Local WordPress and phpMyAdmin are stopped.
 
 ### `yarn wp:start`
 
