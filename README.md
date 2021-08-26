@@ -89,21 +89,15 @@ I'm developing Faster to resolve the following problems.
 
 ## Installation
 
-1. Click `Use this template` button and then create your repository.
-
-2. Run `yarn install` to install packages.
-
 ```zsh
 yarn install
 ```
 
-## Configuration
-
-1. Run `yarn genenv` to generate .env file.
-
 ```zsh
 yarn genenv
 ```
+
+## Configuration
 
 ## `.env`
 
