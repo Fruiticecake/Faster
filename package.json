@@ -38,7 +38,6 @@
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
     "gulp-beautify": "^3.0.0",
-    "gulp-changed": "^4.0.3",
     "gulp-cli": "^2.3.0",
     "gulp-imagemin": "7.1.0",
     "gulp-php2html": "^1.0.1",
