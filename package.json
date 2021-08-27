@@ -67,5 +67,6 @@
     "ios_saf 8.1",
     "Android 4.0",
     "ie 11"
-  ]
+  ],
+  "author":"test",
 }
